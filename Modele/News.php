@@ -19,7 +19,13 @@
          * @param $date
          * @param int $flux
          */
-        public function __construct(int $id, int $flux, string $title, string $description, string $url, string $guid, string $date)
+        public function __construct(int $id,
+                                    string $title,
+                                    string $description,
+                                    string $url,
+                                    string $guid,
+                                    string $date,
+                                    int $flux)
         {
             $this->id = $id;
             $this->title = $title;

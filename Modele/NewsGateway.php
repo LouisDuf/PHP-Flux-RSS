@@ -33,6 +33,12 @@
 
             $results = $this->co->getResults();
 
-            return new News($results[0][0], $results[0][1], $results[0][2], $results[0][3], $results[0][4], $results[0][5], $results[0][6]);
+            return new News($results[0]["id"],
+                            $results[0]["title"],
+                            $results[0]["description"],
+                            $results[0]["url"],
+                            $results[0]["guid"],
+                            $results[0]["datePub"],
+                            $results[0]["flux"]);
         }
     }
