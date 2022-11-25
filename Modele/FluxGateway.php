@@ -43,14 +43,14 @@ class FluxGateway
         $results = $this->con->getResults();
 
         return new Flux(
-            $results[0][0],
-            $results[0][1],
-            $results[0][2],
-            $results[0][3],
-            $results[0][4],
-            $results[0][5],
-            $results[0][6],
-            $results[0][7]
+            $results[0]["id"],
+            $results[0]["title"],
+            $results[0]["path"],
+            $results[0]["link"],
+            $results[0]["description"],
+            $results[0]["image_url"],
+            $results[0]["image_titre"],
+            $results[0]["image_link"]
         );
     }
 
