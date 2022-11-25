@@ -14,7 +14,7 @@
 
         public function Add(News $n)
         {
-            $querry = "INSERT INTO News(flux, titre, description, url, guid, date) VALUES (:flux, :titre, :descirpion, :url, :guid, :date)";
+            $querry = "INSERT INTO tnews(flux, titre, description, url, guid, date) VALUES (:flux, :titre, :descirpion, :url, :guid, :date)";
             $params = array("flux" => array($n->getFlux(), PDO::PARAM_STR),
                             "titre" => array($n->getTitre(), PDO::PARAM_STR),
                             "description" => array($n->getDescription(), PDO::PARAM_STR),
@@ -27,7 +27,7 @@
 
         public function GetNewsById(int $id) : News
         {
-            $querry = "SELECT * FROM News WHERE id=:id";
+            $querry = "SELECT * FROM tnews WHERE id=:id";
             $params = array("id" => array($id, PDO::PARAM_INT));
             $this->co->executeQuery($querry, $params);
 
