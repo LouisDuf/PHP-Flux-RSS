@@ -1,6 +1,10 @@
+<html>
+    <h1>Test</h1>
+</html>
+
 <?php
-//require("Controleur/UserControl.php");
-require("Vue/listeNews.php");
+$controler_user = new UserControler();
+//require("Vue/listeNews.php");
 
 //use controleur\frontControl;
 

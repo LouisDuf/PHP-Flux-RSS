@@ -4,6 +4,7 @@ class UserControler
 {
     function __construct()
     {
+        global $rep,$vues;
         session_start();
 
         $tab_erreur = array();
@@ -16,22 +17,23 @@ class UserControler
                     break;
                 default :
                     $tab_erreur[] = "Erreur : Action inconnue";
-                    require("./Vue/err.php");
+                    require($rep.$vues["erreur"]);
             }
         } catch (PDOException $e) {
             $tab_erreur[] = "Erreur : pas de BD";
-            require("../Vue/err.php");
+            require($rep.$vues["erreur"]);
         } catch (Exception $e) {
             $tab_erreur[] = "Erreur inattendue";
-            require("../Vue/err.php");
+            require($rep.$vues["erreur"]);
         }
 
         exit(0);
     }
 
     function start() {
+        global $rep,$vues;
         $news_g = new NewsGateway(new Connection("mysql:host=londres.uca.local;dbname=dbreregnault", "reregnault", "achanger"));
         $liste_news = $news_g.getAll();
-        require("../Vue/lesNews.php");
+        require($rep.$vues["accueil"]);
     }
 }
