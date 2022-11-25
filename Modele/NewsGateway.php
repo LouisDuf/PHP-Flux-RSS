@@ -41,4 +41,23 @@
                             $results[0]["datePub"],
                             $results[0]["flux"]);
         }
+
+        public function GetAll() {
+            $querry = "SELECT * FROM tnews";
+            $this->co->executeQuery($querry);
+
+            $results = $this->co->getResults();
+
+            $liste_News = array();
+            foreach ($results as $row) {
+                $liste_News.add(new News($row["id"],
+                                         $row["title"],
+                                         $row["description"],
+                                         $row["url"],
+                                         $row["guid"],
+                                         $row["datePub"],
+                                         $row["flux"]));
+            }
+            return $liste_News;
+        }
     }
