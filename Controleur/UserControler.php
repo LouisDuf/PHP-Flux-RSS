@@ -33,7 +33,7 @@ class UserControler
     function start() {
         global $rep,$vues;
         $news_g = new NewsGateway(new Connection("mysql:host=londres.uca.local;dbname=dbreregnault", "reregnault", "achanger"));
-        $liste_news = $news_g.getAll();
-        require($rep.$vues["accueil"]);
+        $liste_news = $news_g->getAll();
+        require($rep.$vues['accueil']);
     }
 }
