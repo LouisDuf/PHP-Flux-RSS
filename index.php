@@ -3,6 +3,8 @@
 </html>
 
 <?php
+
+
 //si controller pas objet
 //  header('Location: controller/controller.php');
 
@@ -18,8 +20,5 @@ Autoload::charger();
 $controler_user = new UserControler();
 //require("Vue/listeNews.php");
 
-//use controleur\frontControl;
 
-//session_start();
-//require('Controleur/frontControl.php');
-//$front = new frontControl();
+require ("Vue/listeNews.php");
