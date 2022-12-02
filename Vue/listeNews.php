@@ -28,7 +28,7 @@
                                     } 
                                     else
                                     {
-                                        require("erreur");
+                                        require($rep.$vues['erreur']);
                                     }
                                 ?>                               
                                     <div><a href="#" data-abc="true"><span class="w-48 avatar gd-warning">S</span></a></div>
@@ -44,7 +44,7 @@
                                                 } 
                                                 else
                                                 {
-                                                    require("erreur");
+                                                    require($rep.$vues['erreur']);
                                                 }
                                             ?>
                                         </a>
@@ -59,7 +59,7 @@
                                                 } 
                                                 else
                                                 {
-                                                    require("erreur");
+                                                    require($rep.$vues['erreur']);
                                                 }
                                             ?>
                                         </div>
@@ -76,7 +76,7 @@
                                                 } 
                                                 else
                                                 {
-                                                    require("erreur");
+                                                    require($rep.$vues['erreur']);
                                                 }
                                             ?>
                                         </div>
