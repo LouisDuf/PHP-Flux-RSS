@@ -30,7 +30,7 @@ class FluxGateway
             ":image_link"=>array($flux->getImageLink(), PDO::PARAM_STR)
         );
 
-        con->excutequery($query, $params);
+        $this->con->executequery($query, $params);
     }
 
     public function getFluxById(int $id)
@@ -38,7 +38,7 @@ class FluxGateway
         $query = 'SELECT * FROM tflux WHERE id=:id';
         $params = array(":id"=>array($id, PDO::PARAM_INT));
 
-        con->excutequery($query, $params);
+        $this->con->executequery($query, $params);
 
         $results = $this->con->getResults();
 
