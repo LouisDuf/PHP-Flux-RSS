@@ -20,5 +20,3 @@ Autoload::charger();
 $controler_user = new UserControler();
 //require("Vue/listeNews.php");
 
-
-require ("Vue/listeNews.php");

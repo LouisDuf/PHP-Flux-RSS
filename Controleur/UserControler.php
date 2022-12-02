@@ -24,6 +24,7 @@ class UserControler
             }
         } catch (PDOException $e) {
             $tab_erreur[] = "Erreur : pas de BD";
+            echo $e->getMessage();
             require($rep.$vues["erreur"]);
         } catch (Exception $e) {
             $tab_erreur[] = "Erreur inattendue";
