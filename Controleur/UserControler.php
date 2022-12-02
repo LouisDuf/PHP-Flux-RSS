@@ -11,6 +11,9 @@ class UserControler
 
         try {
             $action = $_REQUEST['action'];
+            if ($action != null) {
+                Validation::val_action($action);
+            }
             switch ($action) {
                 case NULL :
                     $this->start();
@@ -32,8 +35,8 @@ class UserControler
 
     function start() {
         global $rep,$vues;
-        $news_g = new NewsGateway(new Connection("mysql:host=londres.uca.local;dbname=dbreregnault", "reregnault", "achanger"));
-        $liste_news = $news_g->getAll();
+        $model = new Model();
+        $liste_news = $model->getAllNews();
         require($rep.$vues['accueil']);
     }
 }

@@ -9,9 +9,9 @@ $rep=__DIR__.'/../';
 
 
 //BD
-$base="sasa";
-$login="";
-$mdp="";
+$base="mysql:host=londres.uca.local;dbname=dbreregnault";
+$login="reregnault";
+$mdp="achanger";
 
 //Vues
 $vues['erreur']='Vue/erreur.php';

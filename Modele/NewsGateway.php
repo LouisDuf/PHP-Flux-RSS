@@ -60,4 +60,33 @@
             }
             return $liste_News;
         }
+
+        public function getNewsByPage(int $page, int $nbNews) {
+            $querry = "SELECT * FROM tnews ORDER DESC LIMIT :p, :n";
+            $args = array('p' => array(($page-1)*$nbNews, PDO::PARAM_INT),
+                          'n' => array($nbNews, PDO::PARAM_INT));
+
+            $this->co->executeQuery($querry, $args);
+            $results = $this->co->getResults();
+
+            $liste_News = array();
+            foreach ($results as $row) {
+                $liste_News.add(new News($row["id"],
+                    $row["title"],
+                    $row["description"],
+                    $row["url"],
+                    $row["guid"],
+                    $row["datePub"],
+                    $row["flux"]));
+            }
+            return $liste_News;
+        }
+
+        public function getNbNews() {
+            $querry = "SELECT count(*) FROM tnews";
+            $this->co->executeQuery($querry);
+
+            $results = $this->co->getResults();
+            return $results[0][0];
+        }
     }
