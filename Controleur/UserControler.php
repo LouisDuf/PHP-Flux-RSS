@@ -36,7 +36,7 @@ class UserControler
     function start() {
         global $rep,$vues;
         $model = new Model();
-        $liste_news = $model->getAllNews();
+        $tabNews = $model->getAllNews();
         require($rep.$vues['accueil']);
     }
 }

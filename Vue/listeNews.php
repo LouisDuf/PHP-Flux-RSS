@@ -3,7 +3,7 @@
     <head>
         <title>Liste - News</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="Vue/style.css">
         <link rel=icon href="../imgs/Minecraft-logos.png"/>
     </head>
     <body>

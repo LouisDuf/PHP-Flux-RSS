@@ -9,13 +9,13 @@ $rep=__DIR__.'/../';
 
 
 //BD
-$base="localhost;dbname=louisdb";
-$login="louis";
-$mdp="dbloulou";
+//$base="localhost;dbname=louisdb";
+//$login="louis";
+//$mdp="dbloulou";
 
-//$base="mysql:host=londres.uca.local;dbname=dbreregnault";
-//$login="reregnault";
-//$mdp="achanger";
+$base="mysql:host=londres.uca.local;dbname=dbreregnault";
+$login="reregnault";
+$mdp="achanger";
 
 //Vues
 $vues['erreur']='Vue/erreur.php';

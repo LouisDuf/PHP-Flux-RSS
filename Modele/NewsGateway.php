@@ -12,7 +12,7 @@
             $this->co = $co;
         }
 
-        public function add(News $n)
+        public function addNews(News $n)
         {
             $querry = "INSERT INTO tnews(flux, titre, description, url, guid, date) VALUES (:flux, :titre, :descirpion, :url, :guid, :date)";
             $params = array("flux" => array($n->getFlux(), PDO::PARAM_STR),
@@ -50,13 +50,13 @@
 
             $liste_News = array();
             foreach ($results as $row) {
-                $liste_News.add(new News($row["id"],
-                                         $row["title"],
-                                         $row["description"],
-                                         $row["url"],
-                                         $row["guid"],
-                                         $row["datePub"],
-                                         $row["flux"]));
+                array_push($liste_News, new News($row["id"],
+                                                        $row["title"],
+                                                        $row["description"],
+                                                        $row["url"],
+                                                        $row["guid"],
+                                                        $row["datePub"],
+                                                        $row["flux"]));
             }
             return $liste_News;
         }
