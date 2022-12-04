@@ -54,3 +54,11 @@ CREATE TABLE IF NOT EXISTS tParams (
 INSERT INTO tParams VALUES("nbNewsPage","50");
 INSERT INTO tParams VALUES("nbFluxPage","20");
 
+-- --------------------------------------------------------
+
+--
+-- Pseudo donné
+--
+
+INSERT INTO tflux VALUES(1,'monTitre','monPath','myLink','maDescription');
+INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
