@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <h1>Index</h1>
 </html>
