@@ -1,5 +1,7 @@
 <?php
 
+namespace modele;
+
     class News
     {
         private int $id;

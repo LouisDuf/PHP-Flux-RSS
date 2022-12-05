@@ -1,5 +1,7 @@
 <?php
 
+namespace flux;
+
 class Flux
 {
     private int $id;

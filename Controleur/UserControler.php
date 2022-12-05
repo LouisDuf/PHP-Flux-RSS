@@ -1,5 +1,7 @@
 <?php
 
+namespace controleur;
+
 class UserControler
 {
     function __construct()
@@ -28,6 +30,7 @@ class UserControler
             require($rep.$vues["erreur"]);
         } catch (Exception $e) {
             $tab_erreur[] = "Erreur inattendue";
+            echo $e->getMessage()
             require($rep.$vues["erreur"]);
         }
 

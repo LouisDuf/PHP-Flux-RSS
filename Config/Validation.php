@@ -1,5 +1,7 @@
 <?php
 
+namespace config;
+
 class Validation {
 
     static function val_action($action) {
