@@ -1,6 +1,6 @@
 <?php
 
-namespace flux;
+namespace modele;
 
 class Flux
 {
