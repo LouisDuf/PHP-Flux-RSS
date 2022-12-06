@@ -26,14 +26,12 @@ class Validation {
         {
             $dVueEreur[] =	"testative d'injection de code (attaque sécurité)";
             $nom="";
-
         }
 
         if (!isset($age)||$age==""||!filter_var($age, FILTER_VALIDATE_INT)) {
             $dVueEreur[] =	"pas d'age ";
             $age=0;
         }
-
     }
 
 }
