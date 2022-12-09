@@ -2,13 +2,34 @@
 
 namespace modele;
 
+use config\Connection;
+
 class NewsModel
 {
-    function __construct() {}
+    private  $news_g;
 
-    function getAllNews() {
+    public function __construct() {
         global $base, $login, $mdp;
-        $news_g = new \modele\NewsGateway(new \config\Connection($base, $login, $mdp));
-        return $news_g->getAll();
+        $this->news_g = new NewsGateway(new Connection($base, $login, $mdp));
+    }
+
+    public function getAllNews() {
+        return $this->news_g->getAll();
+    }
+
+    public function getNewsByPage($page, $nbPage){
+        return $this->news_g->getNewsByPage($page, $nbPage);
+    }
+
+    public function getNbNews(){
+        return $this->news_g->getNbNews();
+    }
+
+    public function getNewsById($idNews){
+        return $this->news_g->getNewsById($idNews);
+    }
+
+    public function addNews($newNews){
+        $this->news_g->addNews($newNews);
     }
 }

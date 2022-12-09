@@ -1,5 +1,7 @@
 <?php
 
+namespace modele;
+
 class FluxGateway
 {
     private $con;
@@ -33,6 +35,14 @@ class FluxGateway
         $this->con->executequery($query, $params);
     }
 
+    public function supprimer(int $idFlux)
+    {
+        $query = 'DELETE FROM tflux WHERE id=:id)';
+        $params = array(":id"=>array($idFlux, PDO::PARAM_INT));
+
+        $this->con->executequery($query, $params);
+    }
+
     public function getFluxById(int $id)
     {
         $query = 'SELECT * FROM tflux WHERE id=:id';
@@ -53,5 +63,7 @@ class FluxGateway
             $results[0]["image_link"]
         );
     }
+
+
 
 }

@@ -40,6 +40,19 @@ CREATE TABLE IF NOT EXISTS tnews (
     datePub date NOT NULL
     );
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tAdmin`
+--
+
+CREATE TABLE IF NOT EXISTS tAdmin (
+    login varchar(50) NOT NULL,
+    mdp varchar(50) NOT NULL,
+    PRIMARY KEY (login)
+    );
+
 -- --------------------------------------------------------
 
 --
