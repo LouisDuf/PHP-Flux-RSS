@@ -62,3 +62,5 @@ INSERT INTO tParams VALUES("nbFluxPage","20");
 
 INSERT INTO tflux VALUES(1,'monTitre','monPath','myLink','maDescription');
 INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
+
+-- INSERT INTO tadmin VALUES('admin0', '$argon2i$v=19$m=65536,t=4,p=1$R0U5U3RRdjdYd0JFYm1weQ$aNf7IdQIZXKlX7nfT9GZNcEievYhx3n6+OOoTgTcwOE') -- vrai mot de passe = mdp

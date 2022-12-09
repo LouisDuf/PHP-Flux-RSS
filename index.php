@@ -24,4 +24,5 @@ $myLibLoader = new SplClassLoader('modele', './');
 $myLibLoader->register();
  
 $controler_user = new \controleur\UserControler();
+
 //require("Vue/listeNews.php");
