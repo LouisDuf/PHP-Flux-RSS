@@ -1,5 +1,10 @@
 <?php
 
+namespace controleur;
+
+use config\Validation;
+use modele\NewsModel;
+
 class UserControler
 {
     function __construct()
@@ -24,9 +29,11 @@ class UserControler
             }
         } catch (PDOException $e) {
             $tab_erreur[] = "Erreur : pas de BD";
+            echo $e->getMessage();
             require($rep.$vues["erreur"]);
         } catch (Exception $e) {
             $tab_erreur[] = "Erreur inattendue";
+            echo $e->getMessage();
             require($rep.$vues["erreur"]);
         }
 
@@ -35,7 +42,7 @@ class UserControler
 
     function start() {
         global $rep,$vues;
-        $model = new Model();
+        $model = new NewsModel();
         $tabNews = $model->getAllNews();
         require($rep.$vues['accueil']);
     }

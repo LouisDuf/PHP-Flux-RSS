@@ -1,4 +1,7 @@
 <?php
+namespace modele;
+
+use config\Connection;
 
     class NewsGateway
     {
@@ -33,7 +36,7 @@
 
             $results = $this->co->getResults();
 
-            return new news($results[0]["id"],
+            return new News($results[0]["id"],
                             $results[0]["title"],
                             $results[0]["description"],
                             $results[0]["url"],

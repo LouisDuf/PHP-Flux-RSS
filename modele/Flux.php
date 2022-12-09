@@ -1,5 +1,7 @@
 <?php
 
+namespace modele;
+
 class Flux
 {
     private int $id;

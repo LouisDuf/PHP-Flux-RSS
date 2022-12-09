@@ -1,4 +1,5 @@
 <?php
+
 //gen
 $rep=__DIR__.'/../';
 
@@ -9,7 +10,7 @@ $rep=__DIR__.'/../';
 
 
 //BD
-//$base="localhost;dbname=louisdb";
+//$base="pgsql:host=localhost;dbname=louloudb";
 //$login="louis";
 //$mdp="dbloulou";
 
