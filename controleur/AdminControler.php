@@ -8,9 +8,10 @@
 
 namespace controleur;
 
-use Modele\Flux;
+use modele\FluxModel;
+use modele\AdminModel;
 use config\Validation;
-use config\cleaner;
+use config\Cleaner;
 
 class adminControl{
 
@@ -20,47 +21,27 @@ class adminControl{
     public function __construct(){
         global $path;
         
-        $this->fluxModele = new FluxModele();
-        $this->admin = new AdminModele();
+        $this->fluxModele = new FluxModel();
+        $this->admin = new AdminModel();
 
-        
-        $action = (isset($_REQUEST['action'])?$_REQUEST['action']:null);
+        if (isset($_REQUEST['action'])) {
+            $action = Validation::val_action($_REQUEST['action']);
+        }
+        else {
+            $action = null;
+        }
+
         $a=$this->admin->isAdmin();
 
-        if($a == null){
-            switch($action){
-                case 'pageConnexion':
-                    $this->AfficherPageConnexion();
-                    break;
-                case 'connexion':
-                    $this->connexion();
-                    break;
-                case 'deconnexion':
-                    $this->deconnexion();
-                    break;
-                default:
-                    header("Location: .?action=pageConnexion");
+        try {
+            switch($action) {
+                case null:
+                    
             }
-        }
-        else{
-            switch($action){
-                case 'pageConnexion':
-                case 'connexion':
-                    header("Location: .");
-                    break;
-                case 'supprimerFlux':
-                    $this->supprimerFlux();
-                    break;
-                case 'deconnexion':
-                    $this->deconnexion();
-                    break;
-                case 'ajouterFlux':
-                    $this->ajouterFlux();
-                    break;
-                case 'setNbAffiche':
-                    $this->setNbAffiche();
-                    break;
-            }
+        } catch (\Exception $e) {
+            global $rep, $vues;
+            $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
         }
     }
 
@@ -76,14 +57,7 @@ class adminControl{
     }
 
     private function AfficherPageConnexion(){
-        $fluxs = $this->Flux->getPageFlux(1);
-        $adminco = $this->admin->isAdmin();
-        
-        echo $template->render(array(
-            'Fluxs' => $fluxs,
-            'msg' => cleaner::NettoyageLOGIN($_REQUEST['msg']),
-            'Admin' => $adminco
-        ));
+
     }
 
     private function connexion(){

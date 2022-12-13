@@ -10,17 +10,18 @@ $rep=__DIR__.'/../';
 
 
 //BD
-$base="pgsql:host=localhost;dbname=louloudb";
-$login="louis";
-$mdp="dbloulou";
+//$base="pgsql:host=localhost;dbname=louloudb";
+//$login="louis";
+//$mdp="dbloulou";
 
-//$base="mysql:host=londres.uca.local;dbname=dbreregnault";
-//$login="reregnault";
-//$mdp="achanger";
+$base="mysql:host=londres.uca.local;dbname=dbreregnault";
+$login="reregnault";
+$mdp="achanger";
 
 //Vues
 $vues['erreur']='Vue/erreur.php';
 $vues['accueil']='Vue/listeNews.php';
+$vues['login']='Vue/connection.php';
 
 
 ?>

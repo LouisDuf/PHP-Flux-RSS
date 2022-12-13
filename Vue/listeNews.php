@@ -9,6 +9,7 @@
     <body>
         <div class="navBar">
             <h1>Notre site web</h1>
+            <a href="index.php?action=pageConnexion">Connexion</a>
         </div>
         
         <div class="page-content page-container" id="page-content">

@@ -2,24 +2,31 @@
 
 namespace controleur;
 
+use \config\Validation;
+
 class FrontControler
 {
-    //listAction=array('...');
 
     public function __construct()
     {
+        $TabAdmin = array('ajouterFlux', 'supprimerFlux', 'pageConnexion', 'connexion', 'deconnexion', 'ajouterFlux', 'setNbAffiche');
         try {
-            $action = (isset($_REQUEST['action']) ? $_REQUEST['action'] : null);
-            $TabAdmin = array('ajouterFlux', 'supprimerFlux', 'pageConnexion', 'connexion',
-                'deconnexion', 'ajouterFlux', 'setNbAffiche');
+            if (isset($_REQUEST['action'])) {
+                $action = Validation::val_action($_REQUEST['action']);
+            }
+            else {
+                $action = null;
+            }
 
             if (in_array($action, $TabAdmin)) {
-                new adminControl();
+                new AdminControler();
             } else {
-                new userControl();
+                new UserControler();
             }
-        } catch (Exception $ex) {
-            //echo vueErreur;
+        } catch (Exception $e) {
+            global $rep, $vues;
+            $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
         }
     }
 }

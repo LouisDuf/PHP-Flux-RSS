@@ -18,6 +18,6 @@ $myLibLoader->register();
 $myLibLoader = new SplClassLoader('modele', './');
 $myLibLoader->register();
  
-$controler_user = new \controleur\UserControler();
+$controler_user = new \controleur\FrontControler();
 
 //require("Vue/listeNews.php");

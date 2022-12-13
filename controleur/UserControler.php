@@ -28,12 +28,10 @@ class UserControler
                     require($rep.$vues["erreur"]);
             }
         } catch (PDOException $e) {
-            $tab_erreur[] = "Erreur : pas de BD";
-            echo $e->getMessage();
+            $tab_erreur[] = "Erreur : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         } catch (Exception $e) {
-            $tab_erreur[] = "Erreur inattendue";
-            echo $e->getMessage();
+            $tab_erreur[] = "Erreur inattendue : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         }
 
