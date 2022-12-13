@@ -2,6 +2,8 @@
 
 namespace modele;
 
+    use DateTime;
+
     class News
     {
         private int $id;
@@ -9,7 +11,7 @@ namespace modele;
         private string $description;
         private string $url;
         private string $guid;
-        private string $date;
+        private DateTime $date;
         private int $flux;
 
         /**
@@ -21,12 +23,29 @@ namespace modele;
          * @param $date
          * @param int $flux
          */
-        public function __construct(int $id,
+/*        public function __construct(int $id,
                                     string $title,
                                     string $description,
                                     string $url,
                                     string $guid,
                                     string $date,
+                                    int $flux)
+        {
+            $this->id = $id;
+            $this->title = $title;
+            $this->description = $description;
+            $this->url = $url;
+            $this->guid = $guid;
+            $this->date = $date;
+            $this->flux = $flux;
+        }
+*/
+        public function __construct(int $id,
+                                    string $title,
+                                    string $description,
+                                    string $url,
+                                    string $guid,
+                                    DateTime $date,
                                     int $flux)
         {
             $this->id = $id;
@@ -81,7 +100,7 @@ namespace modele;
         /**
          * @return string
          */
-        public function getDate() : string
+        public function getDate() : DateTime
         {
             return $this->date;
         }

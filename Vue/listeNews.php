@@ -72,8 +72,8 @@
                                                 if (isset($tabNews))
                                                 {
                                                     foreach ($tabNews as &$News) {
-                                                        echo "<p>".$News->getDate()."<p>";
-                                                    } 
+                                                        echo "<p>".$News->getDate()->format('Y-m-d')."<p>";
+                                                    }
                                                 } 
                                                 else
                                                 {

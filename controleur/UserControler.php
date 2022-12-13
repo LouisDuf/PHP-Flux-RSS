@@ -15,7 +15,7 @@ class UserControler
         $tab_erreur = array();
 
         try {
-            $action = $_REQUEST['action'];
+            $action = $_REQUEST['action']??null;
             if ($action != null) {
                 Validation::val_action($action);
             }

@@ -14,7 +14,7 @@ class NewsModel
     }
 
     public function getAllNews() {
-        return $this->news_g->getAll();
+        return $this->news_g->displayPGSQL();
     }
 
     public function getNewsByPage($page, $nbPage){
