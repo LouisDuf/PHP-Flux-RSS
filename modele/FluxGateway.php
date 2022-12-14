@@ -4,13 +4,23 @@ namespace modele;
 
 class FluxGateway
 {
+    /**
+     * @var Connection
+     */
     private $con;
 
+    /**
+     * @param Connection $con
+     */
     public function __construct(Connection $con)
     {
         $this->con = $con;
     }
 
+    /**
+     * @param Flux $flux
+     * @return void
+     */
     public function add(Flux $flux)
     {
         $query = 'INSERT INTO tflux VALUES(
@@ -35,6 +45,10 @@ class FluxGateway
         $this->con->executequery($query, $params);
     }
 
+    /**
+     * @param int $idFlux
+     * @return void
+     */
     public function supprimer(int $idFlux)
     {
         $query = 'DELETE FROM tflux WHERE id=:id)';
@@ -43,6 +57,10 @@ class FluxGateway
         $this->con->executequery($query, $params);
     }
 
+    /**
+     * @param int $id
+     * @return Flux
+     */
     public function getFluxById(int $id)
     {
         $query = 'SELECT * FROM tflux WHERE id=:id';

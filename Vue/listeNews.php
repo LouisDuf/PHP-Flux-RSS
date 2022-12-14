@@ -29,7 +29,7 @@
                                     } 
                                     else
                                     {
-                                        require($rep.$vues['erreur']);
+                                        require($rep.$vues['erreur']); //TO DO fix
                                     }
                                 ?>                               
                                     <div><a href="#" data-abc="true"><span class="w-48 avatar gd-warning">S</span></a></div>
