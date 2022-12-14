@@ -14,8 +14,8 @@ $rep=__DIR__.'/../';
 //$login="louis";
 //$mdp="dbloulou";
 
-$base="mysql:host=londres.uca.local;dbname=dbreregnault";
-$login="reregnault";
+$base="pgsql:host=localhost;dbname=dbprojetphp";
+$login="remi";
 $mdp="achanger";
 
 //Vues
