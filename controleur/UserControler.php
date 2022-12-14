@@ -2,6 +2,7 @@
 
 namespace controleur;
 
+use config\Cleaner;
 use config\Validation;
 use modele\NewsModel;
 
@@ -10,14 +11,13 @@ class UserControler
     function __construct()
     {
         global $rep,$vues;
-        session_start();
 
         $tab_erreur = array();
 
         try {
             $action = $_REQUEST['action']??null;
             if ($action != null) {
-                Validation::val_action($action);
+                $action = Cleaner::NettoyageStr($action);
             }
             switch ($action) {
                 case NULL :

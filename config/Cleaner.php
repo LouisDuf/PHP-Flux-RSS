@@ -18,12 +18,8 @@ class Cleaner {
         return $url;
     }
     
-    public static function NettoyageLOGIN($login){
-        filter_var($login, FILTER_SANITIZE_STRING);
-        return $login;
-    }
-    public static function NettoyageMDP($mdp){
-        filter_var($mdp, FILTER_SANITIZE_STRING);
-        return $mdp;
+    public static function NettoyageStr($chaine){
+        filter_var($chaine, FILTER_SANITIZE_STRING);
+        return $chaine;
     }
 }

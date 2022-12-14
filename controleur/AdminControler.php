@@ -13,7 +13,7 @@ use modele\AdminModel;
 use config\Validation;
 use config\Cleaner;
 
-class adminControl{
+class adminControler{
 
     private $fluxModele;
     private $admin;
@@ -21,22 +21,38 @@ class adminControl{
     public function __construct(){
         global $path;
         
-        $this->fluxModele = new FluxModel();
-        $this->admin = new AdminModel();
+        //$this->fluxModele = new FluxModel();
+        //$this->admin = new AdminModel();
 
         if (isset($_REQUEST['action'])) {
-            $action = Validation::val_action($_REQUEST['action']);
+            $action = Cleaner::NettoyageStr($_REQUEST['action']);
         }
         else {
             $action = null;
         }
 
-        $a=$this->admin->isAdmin();
+        //$a=$this->admin->isAdmin();
 
         try {
             switch($action) {
                 case null:
-                    
+                    echo 'Ce message ne devrait jamais être vu';
+                    break;
+                case 'pageConnexion':
+                    $this->AfficherPageConnexion();
+                    break;
+                case 'connexion':
+                    $this->connexion();
+                    break;
+                case 'deconnexion':
+                    $this->deconnexion();
+                    break;
+                case 'ajouterFlux':
+                    $this->ajouterFlux();
+                    break;
+                case 'supprimerFlux':
+                    $this->supprimerFlux();
+                    break;
             }
         } catch (\Exception $e) {
             global $rep, $vues;
@@ -57,7 +73,8 @@ class adminControl{
     }
 
     private function AfficherPageConnexion(){
-
+        global $rep, $vues;
+        require($rep.$vues['login']);
     }
 
     private function connexion(){

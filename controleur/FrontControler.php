@@ -2,7 +2,9 @@
 
 namespace controleur;
 
-use \config\Validation;
+use config\Cleaner;
+use controleur\UserControler;
+use controleur\AdminControler;
 
 class FrontControler
 {
@@ -10,9 +12,10 @@ class FrontControler
     public function __construct()
     {
         $TabAdmin = array('ajouterFlux', 'supprimerFlux', 'pageConnexion', 'connexion', 'deconnexion', 'ajouterFlux', 'setNbAffiche');
+        session_start();
         try {
             if (isset($_REQUEST['action'])) {
-                $action = Validation::val_action($_REQUEST['action']);
+                $action = Cleaner::NettoyageStr($_REQUEST['action']);
             }
             else {
                 $action = null;
