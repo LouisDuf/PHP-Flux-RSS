@@ -7,16 +7,14 @@ $rep=__DIR__.'/../';
 
 //$dConfig['includes']= array('controleur/Validation.php');
 
-
-
 //BD
-//$base="pgsql:host=localhost;dbname=louloudb";
-//$login="louis";
-//$mdp="dbloulou";
+$base="pgsql:host=localhost;dbname=louisdb";
+$login="louis";
+$mdp="dbloulou";
 
-$base="mysql:host=londres.uca.local;dbname=dbreregnault";
-$login="reregnault";
-$mdp="achanger";
+//$base="mysql:host=londres.uca.local;dbname=dbreregnault";
+//$login="reregnault";
+//$mdp="achanger";
 
 //Vues
 $vues['erreur']='Vue/erreur.php';

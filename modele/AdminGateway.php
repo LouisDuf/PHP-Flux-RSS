@@ -6,7 +6,6 @@ use config\Connection;
 
 class AdminGateway
 {
-
     private Connection $co;
 
     /**
@@ -16,6 +15,11 @@ class AdminGateway
     {
         $this->co = $co;
     }
+
+    /**
+     * @param $login
+     * @return mixed
+     */
     public function getPassword($login){
         $querry = "SELECT * FROM tadmin WHERE login = :login";
         $params = array("login" => array($login, PDO::PARAM_STR));

@@ -6,8 +6,14 @@ use config\Cleaner;
 
 class AdminModel
 {
+    /**
+     * Constructeur Admin
+     */
     public function __construct(){}
 
+    /**
+     * @return Admin|null
+     */
     public function isAdmin(){
         if (isset($_SESSION['role']) && isset($_SESSION['login'])) {
             $role = Cleaner::NettoyageLOGIN($_SESSION['role']);
@@ -19,6 +25,11 @@ class AdminModel
         return null;
     }
 
+    /**
+     * @param string $login
+     * @param string $mdp
+     * @return Admin|null
+     */
     public function connecter(string $login, string $mdp){
         $login = Cleaner::NettoyageLOGIN($login);
         $mdp = Cleaner::NettoyageLOGIN($mdp);
@@ -34,6 +45,9 @@ class AdminModel
         return null;
     }
 
+    /**
+     * @return void
+     */
     public function deconnecter(){
         unset($_SESSION);
         session_destroy();

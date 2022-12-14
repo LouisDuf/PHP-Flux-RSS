@@ -38,6 +38,9 @@ class UserControler
         exit(0);
     }
 
+    /**
+     * @return void
+     */
     function start() {
         global $rep,$vues;
         $model = new NewsModel();

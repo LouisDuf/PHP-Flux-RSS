@@ -20,26 +20,9 @@ namespace modele;
          * @param string $description
          * @param string $url
          * @param string $guid
-         * @param $date
+         * @param DateTime $date
          * @param int $flux
          */
-/*        public function __construct(int $id,
-                                    string $title,
-                                    string $description,
-                                    string $url,
-                                    string $guid,
-                                    string $date,
-                                    int $flux)
-        {
-            $this->id = $id;
-            $this->title = $title;
-            $this->description = $description;
-            $this->url = $url;
-            $this->guid = $guid;
-            $this->date = $date;
-            $this->flux = $flux;
-        }
-*/
         public function __construct(int $id,
                                     string $title,
                                     string $description,
