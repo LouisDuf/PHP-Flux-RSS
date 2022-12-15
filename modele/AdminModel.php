@@ -3,6 +3,7 @@
 namespace modele;
 
 use config\Cleaner;
+use config\Connection;
 
 class AdminModel
 {
@@ -16,8 +17,8 @@ class AdminModel
      */
     public function isAdmin(){
         if (isset($_SESSION['role']) && isset($_SESSION['login'])) {
-            $role = Cleaner::NettoyageLOGIN($_SESSION['role']);
-            $login = Cleaner::NettoyageLOGIN($_SESSION['login']);
+            $role = Cleaner::NettoyageStr($_SESSION['role']);
+            $login = Cleaner::NettoyageStr($_SESSION['login']);
             if ($role = "admin") {
                 return new Admin($login);
             }
@@ -30,14 +31,16 @@ class AdminModel
      * @param string $mdp
      * @return Admin|null
      */
-    public function connecter(string $login, string $mdp){
-        $login = Cleaner::NettoyageLOGIN($login);
-        $mdp = Cleaner::NettoyageLOGIN($mdp);
+    public function connecter(string $login, string $password) {
+        global $base, $login, $mdp;
+        $adm_gw = new AdminGateway(new Connection($base, $login, $mdp));
 
-        $adm_gw = new AdminGateway();
         $mdpBD = $adm_gw->getPassword($login);
-
-        if(password_verify($mdp, $mdpBD)){
+        if ($mdpBD==null) {
+            $mdpBD = '';
+        }
+        echo '<p>Le mot de passe recup dans la base de donnée est :'.$mdpBD.'</p>';
+        if(password_verify($password, $mdpBD)){
             $_SESSION['role']='admin';
             $_SESSION['login']=$login;
             return new Admin($login);

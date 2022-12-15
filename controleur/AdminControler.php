@@ -22,7 +22,7 @@ class adminControler{
         global $path;
         
         //$this->fluxModele = new FluxModel();
-        //$this->admin = new AdminModel();
+        $this->admin = new AdminModel();
 
         if (isset($_REQUEST['action'])) {
             $action = Cleaner::NettoyageStr($_REQUEST['action']);
@@ -31,18 +31,12 @@ class adminControler{
             $action = null;
         }
 
-        //$a=$this->admin->isAdmin();
+        $a=$this->admin->isAdmin();
 
         try {
             switch($action) {
                 case null:
                     echo 'Ce message ne devrait jamais être vu';
-                    break;
-                case 'pageConnexion':
-                    $this->AfficherPageConnexion();
-                    break;
-                case 'connexion':
-                    $this->connexion();
                     break;
                 case 'deconnexion':
                     $this->deconnexion();
@@ -72,18 +66,16 @@ class adminControler{
         $fluxMod->ajouterFlux($link);
     }
 
-    private function AfficherPageConnexion(){
-        global $rep, $vues;
-        require($rep.$vues['login']);
-    }
-
     private function connexion(){
-        $resultat = $this->admin->connecter($_POST['login'],$_POST['mdp']);
-        if($resultat){
+        $login = Cleaner::NettoyageStr($_POST['login']);
+        $mdp = Cleaner::NettoyageStr($_POST['mdp']);
+        $resultat = $this->admin->connecter($login, $mdp);
+
+        if($resultat != null){
             header("Location: .");
         }
         else{
-            header("Location: .?action=pageConnexion&msg=Identifiants Inconnus");
+            header("Location: .?action=pageConnexion&msg=Identifiants-Inconnus");
         }
     }
     

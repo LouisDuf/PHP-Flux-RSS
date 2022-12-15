@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Liste - News</title>
+        <title>Connexion</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="Vue/styleCon.css">
         <link rel=icon href="./imgs/Minecraft-logos.png"/>
@@ -22,19 +22,30 @@
                           <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
                         </div>
 
-                        <form>
+                        <form action="index.php?action=connexion" method="post">
                           <p>Please login to your account</p>
 
                           <div class="form-outline mb-4">
-                            <input type="email" id="form2Example11" class="form-control"
-                              placeholder="Phone number or email address" />
+                            <input type="pseudo" id="form2Example11" class="form-control"
+                              placeholder="Username" name="login"/>
                             <label class="form-label" for="form2Example11">Username</label>
                           </div>
 
                           <div class="form-outline mb-4">
-                            <input type="password" id="form2Example22" class="form-control" />
+                            <input type="password" id="form2Example22" class="form-control"
+                              placeholder="password" name="password"/>
                             <label class="form-label" for="form2Example22">Password</label>
                           </div>
+
+                          <div>
+                              <input type="submit" value="connexion">
+                          </div>
+
+                            <?php
+                            if(isset($message)) {
+                                echo '<p>'.$message.'</p>';
+                            }
+                            ?>
                             
                         </form>
 

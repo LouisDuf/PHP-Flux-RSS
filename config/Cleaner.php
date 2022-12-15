@@ -19,7 +19,7 @@ class Cleaner {
     }
     
     public static function NettoyageStr($chaine){
-        filter_var($chaine, FILTER_SANITIZE_STRING);
+        filter_var($chaine, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         return $chaine;
     }
 }

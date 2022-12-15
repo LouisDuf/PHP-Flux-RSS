@@ -5,13 +5,14 @@ namespace controleur;
 use config\Cleaner;
 use controleur\UserControler;
 use controleur\AdminControler;
+use modele\AdminModel;
 
 class FrontControler
 {
 
     public function __construct()
     {
-        $TabAdmin = array('ajouterFlux', 'supprimerFlux', 'pageConnexion', 'connexion', 'deconnexion', 'ajouterFlux', 'setNbAffiche');
+        $TabAdmin = array('ajouterFlux', 'supprimerFlux', 'deconnexion', 'ajouterFlux', 'setNbAffiche');
         session_start();
         try {
             if (isset($_REQUEST['action'])) {
@@ -22,11 +23,22 @@ class FrontControler
             }
 
             if (in_array($action, $TabAdmin)) {
-                new AdminControler();
+                $model_admin = new AdminModel();
+                $admin = $model_admin->isAdmin();
+                if ($admin != null) {
+                    new AdminControler();
+                } else {
+                    global $rep, $vues;
+                    require($rep.$vues['connexion']);
+                }
             } else {
                 new UserControler();
             }
-        } catch (Exception $e) {
+        } catch (\PDOException $e) {
+            global $rep, $vues;
+            $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
+        } catch (\Exception $e) {
             global $rep, $vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
             require($rep.$vues["erreur"]);

@@ -4,6 +4,7 @@ namespace controleur;
 
 use config\Cleaner;
 use config\Validation;
+use modele\AdminModel;
 use modele\NewsModel;
 
 class UserControler
@@ -22,6 +23,12 @@ class UserControler
             switch ($action) {
                 case NULL :
                     $this->start();
+                    break;
+                case 'pageConnexion':
+                    $this->pageConnexion(null);
+                    break;
+                case 'connexion':
+                    $this->connexion();
                     break;
                 default :
                     $tab_erreur[] = "Erreur : Action inconnue";
@@ -46,5 +53,27 @@ class UserControler
         $model = new NewsModel();
         $tabNews = $model->getAllNews();
         require($rep.$vues['accueil']);
+    }
+
+    function pageConnexion($msg) {
+        global $rep, $vues;
+        if ($msg != null) {
+            $message = $msg;
+        }
+        require($rep.$vues['login']);
+    }
+
+    function connexion() {
+        $admin = new AdminModel();
+        $login = Cleaner::NettoyageStr($_POST['login']);
+        $mdp = Cleaner::NettoyageStr($_POST['password']);
+        $resultat = $admin->connecter($login, $mdp);
+
+        if($resultat != null) {
+            header("Location: .");
+        }
+        else{
+            $this->pageConnexion("Identifiants Inconnus : login=".$login."/password=".$mdp);
+        }
     }
 }
