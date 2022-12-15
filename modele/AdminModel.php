@@ -31,19 +31,19 @@ class AdminModel
      * @param string $mdp
      * @return Admin|null
      */
-    public function connecter(string $login, string $password) {
+    public function connecter(string $loginUser, string $password) {
         global $base, $login, $mdp;
         $adm_gw = new AdminGateway(new Connection($base, $login, $mdp));
 
-        $mdpBD = $adm_gw->getPassword($login);
+        $mdpBD = $adm_gw->getPassword($loginUser);
         if ($mdpBD==null) {
             $mdpBD = '';
         }
         echo '<p>Le mot de passe recup dans la base de donnée est :'.$mdpBD.'</p>';
         if(password_verify($password, $mdpBD)){
             $_SESSION['role']='admin';
-            $_SESSION['login']=$login;
-            return new Admin($login);
+            $_SESSION['login']=$loginUser;
+            return new Admin($loginUser);
         }
         return null;
     }

@@ -70,7 +70,7 @@ class UserControler
         $resultat = $admin->connecter($login, $mdp);
 
         if($resultat != null) {
-            header("Location: .");
+            $this->start();
         }
         else{
             $this->pageConnexion("Identifiants Inconnus : login=".$login."/password=".$mdp);
