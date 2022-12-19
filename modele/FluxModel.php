@@ -42,4 +42,10 @@ class FluxModel
     public function supprimer($idFlux){
         $this->flux_g->supprimer($idFlux);
     }
+
+    public function getAllFlux() {
+        $liste = $this->flux_g->getAll();
+
+        return $liste;
+    }
 }

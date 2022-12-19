@@ -39,7 +39,7 @@ class AdminModel
         if ($mdpBD==null) {
             $mdpBD = '';
         }
-        echo '<p>Le mot de passe recup dans la base de donnée est :'.$mdpBD.'</p>';
+
         if(password_verify($password, $mdpBD)){
             $_SESSION['role']='admin';
             $_SESSION['login']=$loginUser;

@@ -3,13 +3,15 @@
     <head>
         <title>Liste - News</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="Vue/styleLNews.css">
+        <link rel="stylesheet" type="text/css" href="Vue/styleLNews.css"/>
+        <link rel="slyesheet" type="text/css" href="Vue/bootstrap/css/bootstrap.css"/>
         <link rel=icon href="./imgs/Minecraft-logos.png"/>
     </head>
     <body>
         <div class="navBar">
             <h1>Notre site web</h1>
-            <a href="index.php?action=pageConnexion">Connexion</a>
+            <a href="index.php?action=pageConnexion"><button>Connexion</button></a>
+            <a href="index.php?action=afficherFlux">Gestion des flux</a>
         </div>
         
         <div class="page-content page-container" id="page-content">

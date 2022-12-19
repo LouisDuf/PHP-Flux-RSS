@@ -2,6 +2,8 @@
 
 namespace modele;
 
+use function Sodium\add;
+
 class FluxGateway
 {
     /**
@@ -82,6 +84,22 @@ class FluxGateway
         );
     }
 
-
+    public function getAll() {
+        $querry = 'SELECT * FROM tflux';
+        $this->con->executeQuery($querry);
+        $results = $this->con->getResults();
+        $liste = array();
+        foreach ($results as $row) {
+            array_push($liste, new Flux($row["id"],
+                                                $row["title"],
+                                                $row["path"],
+                                                $row["link"],
+                                                $row["description"],
+                                                $row["image_url"],
+                                                $row["image_titre"],
+                                                $row["image_link"]));
+        }
+        return $liste;
+    }
 
 }

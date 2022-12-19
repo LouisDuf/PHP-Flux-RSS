@@ -47,6 +47,9 @@ class adminControler{
                 case 'supprimerFlux':
                     $this->supprimerFlux();
                     break;
+                case 'afficherFlux':
+                    $this->afficherFlux();
+                    break;
             }
         } catch (\Exception $e) {
             global $rep, $vues;
@@ -55,28 +58,12 @@ class adminControler{
         }
     }
 
-    private function addFlux()
-    {
-        Validation::existe($_REQUEST['link']);
-        Validation::URLValid($_REQUEST['link']);
+    private function afficherFlux() {
+        global $rep, $vues;
+        $model = new FluxModel();
+        $tabFlux = $model->getAllFlux();
 
-        $link = $_REQUEST['valid'];
-
-        $fluxMod = new FluxModele();
-        $fluxMod->ajouterFlux($link);
-    }
-
-    private function connexion(){
-        $login = Cleaner::NettoyageStr($_POST['login']);
-        $mdp = Cleaner::NettoyageStr($_POST['mdp']);
-        $resultat = $this->admin->connecter($login, $mdp);
-
-        if($resultat != null){
-            header("Location: .");
-        }
-        else{
-            header("Location: .?action=pageConnexion&msg=Identifiants-Inconnus");
-        }
+        require ($rep.$vues['flux']);
     }
     
     private function deconnexion(){
@@ -86,17 +73,11 @@ class adminControler{
 
     private function ajouterFlux()
     {
-        $lien = $_REQUEST['url'];
-        $this->Flux->ajouterFlux($lien);
-        header("Location: .?action=afficherFlux");
+
     }
 
     private function supprimerFlux()
     {
-        $id = $_REQUEST['id'];
-        Validation::existe($id);
-        Validation::isNumber($id);
-        $this->Flux->supprimerFlux($id);
-        header("Location: .?action=afficherFlux");
+
     }
 }

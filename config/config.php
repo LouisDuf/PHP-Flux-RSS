@@ -26,6 +26,7 @@ $mdp="achanger";
 $vues['erreur']='Vue/erreur.php';
 $vues['accueil']='Vue/listeNews.php';
 $vues['login']='Vue/connection.php';
+$vues['flux']='Vue/listeFlux.php';
 
 
 ?>
