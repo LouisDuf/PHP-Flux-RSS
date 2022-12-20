@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <form action="" method="post">
+                        <form action="index.php?action=setNewsParPage" method="post">
                             <th scope="row">Nombre de News par page</th>
                             <td>
                                 <?php
@@ -42,7 +42,7 @@
                         </form>
                     </tr>
                     <tr>
-                        <form>
+                        <form action="index.php?action=setFluxParPage" method="post">
                             <th scope="row">Nombre de flux par page</th>
                             <td>
                                 <?php

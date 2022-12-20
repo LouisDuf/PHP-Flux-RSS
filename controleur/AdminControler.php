@@ -57,6 +57,12 @@ class adminControler{
                 case 'pageParams':
                     $this->afficherPageParams();
                     break;
+                case 'setNewsParPage':
+                    $this->setNewsParPage();
+                    break;
+                case 'setFluxParPage':
+                    $this->setFluxParPage();
+                    break;
             }
         } catch (\PDOException $e) {
             global $rep, $vues;
@@ -129,6 +135,22 @@ class adminControler{
 
     private function afficherPageParams() {
         global $rep, $vues;
+        require($rep.$vues['params']);
+    }
+
+    private function setNewsParPage() {
+        global $rep, $vues;
+
+
+
+        require($rep.$vues['params']);
+    }
+
+    private function setFluxParPage() {
+        global $rep, $vues;
+
+
+
         require($rep.$vues['params']);
     }
 }
