@@ -1,5 +1,4 @@
 <html>
-    <!--TO DO-->
     <head>
         <title>Liste - Flux</title>
 

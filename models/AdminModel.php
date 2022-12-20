@@ -1,6 +1,6 @@
 <?php
 
-namespace modele;
+namespace models;
 
 use config\Cleaner;
 use config\Connection;
@@ -13,6 +13,7 @@ class AdminModel
     public function __construct(){}
 
     /**
+     * Vérifie si nous avons bien a faire un admin
      * @return Admin|null
      */
     public function isAdmin(){

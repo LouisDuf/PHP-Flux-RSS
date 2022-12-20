@@ -2,10 +2,12 @@
 
 namespace controleur;
 
+use Exception;
 use config\Cleaner;
 use config\Validation;
-use modele\AdminModel;
-use modele\NewsModel;
+use models\AdminModel;
+use models\Model;
+use PDOException;
 
 class UserControler
 {
@@ -48,9 +50,10 @@ class UserControler
     /**
      * @return void
      */
-    function start() {
+    function start(): void
+    {
         global $rep,$vues;
-        $model = new NewsModel();
+        $model = new Model();
         $page = $_REQUEST['page']??null;
         if ($page == null) {
             $page = 1;
@@ -69,7 +72,8 @@ class UserControler
         require($rep.$vues['accueil']);
     }
 
-    function pageConnexion($msg) {
+    function pageConnexion($msg): void
+    {
         global $rep, $vues;
         if ($msg != null) {
             $message = $msg;
@@ -77,7 +81,8 @@ class UserControler
         require($rep.$vues['login']);
     }
 
-    function connexion() {
+    function connexion(): void
+    {
         $admin = new AdminModel();
         $login = Cleaner::NettoyageStr($_POST['login']);
         $mdp = Cleaner::NettoyageStr($_POST['password']);

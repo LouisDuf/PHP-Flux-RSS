@@ -8,17 +8,13 @@ $rep=__DIR__.'/../';
 //$dConfig['includes']= array('controleur/Validation.php');
 
 //BD
-//$base="pgsql:host=localhost;dbname=louisdb";
-//$login="louis";
-//$mdp="dbloulou";
+$base="pgsql:host=localhost;dbname=louloudb";
+$login="loulou";
+$mdp="dbloulou";
 
 
-$base="pgsql:host=localhost;dbname=dbprojetphp";
-$login="remi";
-$mdp="achanger";
-
-//$base="mysql:host=londres.uca.local;dbname=dbreregnault";
-//$login="reregnault";
+//$base="pgsql:host=localhost;dbname=dbprojetphp";
+//$login="remi";
 //$mdp="achanger";
 
 

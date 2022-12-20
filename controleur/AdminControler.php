@@ -8,16 +8,16 @@
 
 namespace controleur;
 
-use modele\Flux;
-use modele\FluxModel;
-use modele\AdminModel;
+use metier\Flux;
+use models\Model;
+use models\AdminModel;
 use config\Validation;
 use config\Cleaner;
 
 class adminControler{
 
-    private $fluxModele;
-    private $admin;
+    private Model $Model;
+    private AdminModel $admin;
     
     public function __construct(){
         global $path;
@@ -51,7 +51,7 @@ class adminControler{
                 case 'afficherFlux':
                     $this->afficherFlux();
                     break;
-                case 'pageAjoutFlux':
+                case 'pageAdmin':
                     $this->afficherFormulaireFlux();
                     break;
             }
@@ -68,7 +68,7 @@ class adminControler{
 
     private function afficherFlux() {
         global $rep, $vues;
-        $model = new FluxModel();
+        $model = new Model();
 
         $page = Cleaner::NettoyageInt(abs($_REQUEST['page']??1));
         if ($page == 0) {
@@ -96,7 +96,7 @@ class adminControler{
 
     private function ajouterFlux()
     {
-        $model = new FluxModel();
+        $model = new Model();
 
         $title = Cleaner::NettoyageStr($_POST['title'])??null;
         $path = Cleaner::NettoyageStr($_POST['path'])??null;
@@ -115,11 +115,11 @@ class adminControler{
 
     private function supprimerFlux()
     {
-        $model = new FluxModel();
+        $model = new Model();
         $id = $_REQUEST['idFlux']??null;
         if ($id != null) {
             $id = Cleaner::NettoyageInt($id);
-            $model->supprimer($id);
+            $model->supprimerFlux($id);
         }
         $this->afficherFlux();
     }
