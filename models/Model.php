@@ -2,7 +2,8 @@
 
 namespace models;
 
-
+use metier\Flux;
+use metier\News;
 use config\Connection;
 use gateway\NewsGateway;
 use gateway\FluxGateway;
@@ -11,9 +12,9 @@ class Model
 {
 
     /****************** Déclaration des varaibles GateWays ******************/
-    private FluxGateway $flux_g;
     private NewsGateway $news_g;
-    
+    private FluxGateway $flux_g;
+
     /****************** Constructeur ******************/
 
     public function __construct() {
@@ -22,44 +23,50 @@ class Model
         $this->flux_g = new FluxGateway(new Connection($base, $login, $mdp));
     }
 
+
     /****************** Méthodes d'affichage ******************/
 
     /****************** Méthodes Ajout/Suppression  ******************/
  
     // Ajout
 
-    public function addFlux($flux){
+    public function addFlux($flux): void
+    {
         $this->flux_g->gAddFlux($flux);
     }
 
-    public function addNews($newNews){
+    public function addNews($newNews): void
+    {
         $this->news_g->gAddNews($newNews);
     }
 
     // Suppression
 
-    public function supprimerFlux($idFlux){
+    public function supprimerFlux($idFlux): void
+    {
         $this->flux_g->gSupprimerFlux($idFlux);
     }
 
-    public function supprimerNews($newNews){
+    public function supprimerNews($newNews): void
+    {
         $this->news_g->gSupprimerNews($newNews);
     }
 
     /****************** Getters ******************/
 
     // Flux 
-    public function getFluxById($id) {
+    public function getFluxById($id): Flux
+    {
         return $this->flux_g->getFluxById($id);
     }
 
-    public function getAllFlux() {
-        $liste = $this->flux_g->gAfficherFlux();
-
-        return $liste;
+    public function getAllFlux(): array
+    {
+        return $this->flux_g->gAfficherFlux();
     }
 
-    public function getFluxByPage($page, $nbFluxByPage) {
+    public function getFluxByPage($page, $nbFluxByPage): array
+    {
         return $this->flux_g->getFluxByPage($page, $nbFluxByPage);
     }
 
@@ -68,11 +75,13 @@ class Model
     }
 
     // News 
-    public function getAllNews() {
+    public function getAllNews(): array
+    {
         return $this->news_g->gAfficherNews();
     }
 
-    public function getNewsByPage($page, $nbPage){
+    public function getNewsByPage($page, $nbPage): array
+    {
         return $this->news_g->getNewsByPage($page, $nbPage);
     }
 
@@ -80,7 +89,8 @@ class Model
         return $this->news_g->getNbNews();
     }
 
-    public function getNewsById($idNews){
+    public function getNewsById($idNews): News
+    {
         return $this->news_g->getNewsById($idNews);
     }
 }
