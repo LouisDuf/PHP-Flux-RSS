@@ -37,6 +37,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=afficherFlux">Gestion des Flux</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=pageParams">Gestion des paramètres</a>
+                    </li>
                 </ul>
                 <!-- Left links -->
 
