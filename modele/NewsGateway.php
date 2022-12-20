@@ -3,6 +3,7 @@ namespace modele;
 
 use config\Connection;
 use DateTime;
+use \PDO;
 
 class NewsGateway
 {
@@ -60,7 +61,7 @@ class NewsGateway
      * @return array
      */
     public function getNewsByPage(int $page, int $nbNews) {
-        $querry = "SELECT * FROM tnews ORDER DESC LIMIT :p, :n";
+        $querry = "SELECT * FROM tnews ORDER BY datePub DESC LIMIT :n OFFSET :p";
         $args = array('p' => array(($page-1)*$nbNews, PDO::PARAM_INT),
                       'n' => array($nbNews, PDO::PARAM_INT));
 
@@ -69,13 +70,13 @@ class NewsGateway
 
         $liste_News = array();
         foreach ($results as $row) {
-            $liste_News.add(new News($row["id"],
+            $liste_News[] = new News($row["id"],
                 $row["title"],
                 $row["description"],
                 $row["url"],
                 $row["guid"],
-                $row["datePub"],
-                $row["flux"]));
+                DateTime::createFromFormat('Y-m-d', $row['datepub']),
+                $row["flux"]);
         }
         return $liste_News;
     }
@@ -105,13 +106,13 @@ class NewsGateway
         foreach ($results as $row)
         {
             array_push($liste_News, new News(intval(
-            $row['id']),
-            $row['title'],
-            $row['description'],
-            $row["url"],
-            $row["guid"],
-            DateTime::createFromFormat('Y-m-d', $row['datepub']),
-        intval($row['flux'])));
+                $row['id']),
+                $row['title'],
+                $row['description'],
+                $row["url"],
+                $row["guid"],
+                DateTime::createFromFormat('Y-m-d', $row['datepub']),
+                intval($row['flux'])));
         }
         return $liste_News;
     }

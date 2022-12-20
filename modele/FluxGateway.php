@@ -90,16 +90,43 @@ class FluxGateway
 
         $liste = array();
         foreach ($results as $row) {
-            array_push($liste, new Flux($row["id"],
-                                                $row["title"],
-                                                $row["path"],
-                                                $row["link"],
-                                                $row["description"],
-                                                $row["image_url"]??"",
-                                                $row["image_titre"]??"",
-                                                $row["image_link"]??""));
+            $liste[] = new Flux($row["id"],
+                $row["title"],
+                $row["path"],
+                $row["link"],
+                $row["description"],
+                $row["image_url"] ?? "",
+                $row["image_titre"] ?? "",
+                $row["image_link"] ?? "");
         }
         return $liste;
     }
 
+    public function getNbFlux() {
+        $query = 'SELECT count(*) FROM tflux';
+        $this->con->executeQuery($query);
+        return $this->con->getResults()[0][0];
+    }
+
+    public function getFluxByPage($page, $nbFluxByPage) {
+        $query = 'SELECT * FROM tflux LIMIT :nbFlux OFFSET :from';
+        $params = array('nbFlux' => array($nbFluxByPage, PDO::PARAM_INT),
+                        'from' => array(($page-1)*$nbFluxByPage, PDO::PARAM_INT));
+
+        $this->con->executeQuery($query, $params);
+
+        $liste = array();
+        $results = $this->con->getResults();
+        foreach ( $results as $row) {
+            $liste[] = new Flux($row["id"],
+                $row["title"],
+                $row["path"],
+                $row["link"],
+                $row["description"],
+                $row["image_url"] ?? "",
+                $row["image_titre"] ?? "",
+                $row["image_link"] ?? "");
+        }
+        return $liste;
+    }
 }

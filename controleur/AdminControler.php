@@ -55,6 +55,10 @@ class adminControler{
                     $this->afficherFormulaireFlux();
                     break;
             }
+        } catch (\PDOException $e) {
+            global $rep, $vues;
+            $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
         } catch (\Exception $e) {
             global $rep, $vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
@@ -65,7 +69,17 @@ class adminControler{
     private function afficherFlux() {
         global $rep, $vues;
         $model = new FluxModel();
-        $tabFlux = $model->getAllFlux();
+
+        $page = Cleaner::NettoyageInt(abs($_REQUEST['page']??1));
+        if ($page == 0) {
+            $page = 1;
+        }
+
+        $nbFluxByPage=2;
+        $tabFlux = $model->getFluxByPage($page, $nbFluxByPage);
+
+        $fluxTot = $model->getNbFlux();
+        $pageMax=ceil($fluxTot/$nbFluxByPage);
 
         require ($rep.$vues['flux']);
     }

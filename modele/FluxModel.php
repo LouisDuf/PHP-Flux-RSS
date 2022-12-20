@@ -47,4 +47,12 @@ class FluxModel
 
         return $liste;
     }
+
+    public function getFluxByPage($page, $nbFluxByPage) {
+        return $this->flux_g->getFluxByPage($page, $nbFluxByPage);
+    }
+
+    public function getNbFlux() {
+        return $this->flux_g->getNbFlux();
+    }
 }

@@ -51,7 +51,21 @@ class UserControler
     function start() {
         global $rep,$vues;
         $model = new NewsModel();
-        $tabNews = $model->getAllNews();
+        $page = $_REQUEST['page']??null;
+        if ($page == null) {
+            $page = 1;
+        }
+        else {
+            $page = abs(Cleaner::NettoyageInt($page));
+            if ($page==0) {
+                $page=1;
+            }
+        }
+        $tabNews = $model->getNewsByPage($page, 10);
+
+        $nbNewsTot = $model->getNbNews();
+        $pageMax = ceil($nbNewsTot/10);
+
         require($rep.$vues['accueil']);
     }
 
