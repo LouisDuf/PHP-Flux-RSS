@@ -8,6 +8,7 @@
 
 namespace controleur;
 
+use modele\Flux;
 use modele\FluxModel;
 use modele\AdminModel;
 use config\Validation;
@@ -50,6 +51,9 @@ class adminControler{
                 case 'afficherFlux':
                     $this->afficherFlux();
                     break;
+                case 'pageAjoutFlux':
+                    $this->afficherFormulaireFlux();
+                    break;
             }
         } catch (\Exception $e) {
             global $rep, $vues;
@@ -71,13 +75,38 @@ class adminControler{
         header("Location: .");
     }
 
+    private function afficherFormulaireFlux() {
+        global $rep, $vues;
+        require($rep.$vues['formulaireFlux']);
+    }
+
     private function ajouterFlux()
     {
+        $model = new FluxModel();
 
+        $title = Cleaner::NettoyageStr($_POST['title'])??null;
+        $path = Cleaner::NettoyageStr($_POST['path'])??null;
+        $link = Cleaner::NettoyageURL($_POST['link'])??null;
+        $desc = Cleaner::NettoyageStr($_POST['description'])??null;
+        $imUrl = Cleaner::NettoyageURL($_POST['image-url'])??"";
+        $imTitle = CLeaner::NettoyageStr($_POST['image-title'])??"";
+        $imLink = Cleaner::NettoyageURL($_POST['image-link'])??"";
+
+        $flux = new Flux(-1, $title, $path, $link, $desc, $imUrl, $imTitle, $imLink);
+
+        $model->addFlux($flux);
+
+        $this->afficherFlux();
     }
 
     private function supprimerFlux()
     {
-
+        $model = new FluxModel();
+        $id = $_REQUEST['idFlux']??null;
+        if ($id != null) {
+            $id = Cleaner::NettoyageInt($id);
+            $model->supprimer($id);
+        }
+        $this->afficherFlux();
     }
 }

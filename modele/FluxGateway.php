@@ -2,7 +2,7 @@
 
 namespace modele;
 
-use function Sodium\add;
+use \PDO;
 
 class FluxGateway
 {
@@ -25,8 +25,7 @@ class FluxGateway
      */
     public function add(Flux $flux)
     {
-        $query = 'INSERT INTO tflux VALUES(
-                         :id,
+        $query = 'INSERT INTO tflux(title, path, link, description, image_url, image_titre, image_link) VALUES(
                          :title,
                          :path,
                          :link,
@@ -53,7 +52,7 @@ class FluxGateway
      */
     public function supprimer(int $idFlux)
     {
-        $query = 'DELETE FROM tflux WHERE id=:id)';
+        $query = 'DELETE FROM tflux WHERE id=:id';
         $params = array(":id"=>array($idFlux, PDO::PARAM_INT));
 
         $this->con->executequery($query, $params);

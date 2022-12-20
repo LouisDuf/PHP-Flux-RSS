@@ -15,7 +15,7 @@
             <a href="index.php?action=afficherFlux">Gestion des flux</a>
         </div>
         <?php
-        require("navbar.php")
+            require("navbar.php")
         ?>
         
         <div class="page-content page-container" id="page-content">

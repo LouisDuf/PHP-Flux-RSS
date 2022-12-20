@@ -22,4 +22,9 @@ class Cleaner {
         filter_var($chaine, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         return $chaine;
     }
+
+    public static  function NettoyageInt($int) {
+        filter_var($int, FILTER_SANITIZE_NUMBER_INT);
+        return $int;
+    }
 }
