@@ -11,8 +11,12 @@
         <div class="navBar">
             <h1>Notre site web</h1>
             <a href="index.php?action=pageConnexion"><button>Connexion</button></a>
+            <a href="index.php?action=deconnexion"><button>Deconnexion</button></a>
             <a href="index.php?action=afficherFlux">Gestion des flux</a>
         </div>
+        <?php
+        require("navbar.php")
+        ?>
         
         <div class="page-content page-container" id="page-content">
             <div class="padding">

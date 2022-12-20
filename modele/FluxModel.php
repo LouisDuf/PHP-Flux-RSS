@@ -2,7 +2,6 @@
 
 namespace modele;
 
-use config\Connection;
 
 class FluxModel
 {
@@ -16,7 +15,7 @@ class FluxModel
      */
     public function __construct() {
         global $base, $login, $mdp;
-        $this->flux_g = new FluxGateway(new Connection($base, $login, $mdp));
+        $this->flux_g = new FluxGateway(new \config\Connection($base, $login, $mdp));
     }
 
     /**

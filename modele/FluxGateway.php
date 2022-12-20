@@ -14,7 +14,7 @@ class FluxGateway
     /**
      * @param Connection $con
      */
-    public function __construct(Connection $con)
+    public function __construct(\config\Connection $con)
     {
         $this->con = $con;
     }
@@ -88,6 +88,7 @@ class FluxGateway
         $querry = 'SELECT * FROM tflux';
         $this->con->executeQuery($querry);
         $results = $this->con->getResults();
+
         $liste = array();
         foreach ($results as $row) {
             array_push($liste, new Flux($row["id"],
@@ -95,9 +96,9 @@ class FluxGateway
                                                 $row["path"],
                                                 $row["link"],
                                                 $row["description"],
-                                                $row["image_url"],
-                                                $row["image_titre"],
-                                                $row["image_link"]));
+                                                $row["image_url"]??"",
+                                                $row["image_titre"]??"",
+                                                $row["image_link"]??""));
         }
         return $liste;
     }
