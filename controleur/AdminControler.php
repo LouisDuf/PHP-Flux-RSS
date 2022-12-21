@@ -189,6 +189,9 @@ class adminControler{
             $msg = "Valeur de paramètre invalide !";
         }
         $model->setNbNewsMax($new_value);
+        if ($new_value<$old_value) {
+            $model->faireLeMenageDansLesNews();
+        }
         $this->afficherPageParams($msg);
     }
 }

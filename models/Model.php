@@ -55,6 +55,16 @@ class Model
         $this->news_g->gSupprimerNews($newNews);
     }
 
+    public function faireLeMenageDansLesNews() {
+        $nbNews = $this->getNbNews();
+        $nbNewsMax = $this->getNbNewsMax();
+
+        while ($nbNews > $nbNewsMax) {
+            $this->news_g->removeOldestNews();
+            $nbNews = $nbNews - 1;
+        }
+    }
+
     /****************** Getters ******************/
 
     // Flux 
