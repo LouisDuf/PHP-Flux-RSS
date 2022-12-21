@@ -38,6 +38,7 @@ Config :
 
 Autre(s) :
 * Modification des tables SQL
+* Insertion des flux rss
 * Faire en sorte que l'autoloader fonctionne
 
 ### Louis Dufour
