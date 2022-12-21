@@ -132,17 +132,6 @@ class adminControler{
 
         $this->afficherFlux();
     }
-
-    private function supprimerFlux()
-    {
-        $model = new Model();
-        $id = $_REQUEST['idFlux']??null;
-        if ($id != null) {
-            $id = Cleaner::NettoyageInt($id);
-            $model->supprimerFlux($id);
-        }
-        $this->afficherFlux();
-    }
     
     private function afficherPageParams() {
         global $rep, $vues;

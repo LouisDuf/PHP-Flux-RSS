@@ -15,7 +15,7 @@ class FrontControler
         $TabAdmin = array('deconnexion', 'afficherFlux', 'supprimerFlux', 'pageAjoutFlux', 'ajouterFlux', 'pageParams', 'setNewsParPage', 'setFluxParPage');
 
         session_start();
-        
+
         try {
             if (isset($_REQUEST['action'])) {
                 $action = Cleaner::NettoyageStr($_REQUEST['action']);
