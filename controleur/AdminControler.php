@@ -42,17 +42,20 @@ class adminControler{
                 case 'deconnexion':
                     $this->deconnexion();
                     break;
-                case 'ajouterFlux':
-                    $this->ajouterFlux();
-                    break;
-                case 'supprimerFlux':
-                    $this->supprimerFlux();
-                    break;
                 case 'afficherFlux':
                     $this->afficherFlux();
                     break;
                 case 'pageAdmin':
                     $this->afficherFormulaireFlux();
+                    break;
+                case 'supprimerFlux':
+                    $this->supprimerFlux();
+                    break;
+                case 'ajouterFlux':
+                    $this->ajouterFlux();
+                    break;
+                case 'pageParams':
+                    $this->afficherPageParams();
                     break;
             }
         } catch (\PDOException $e) {
@@ -64,6 +67,11 @@ class adminControler{
             $tab_erreur[] = "Erreur : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         }
+    }
+
+    private function deconnexion(){
+        $this->admin->deconnecter();
+        header("Location: .");
     }
 
     private function afficherFlux() {
@@ -83,15 +91,21 @@ class adminControler{
 
         require ($rep.$vues['flux']);
     }
-    
-    private function deconnexion(){
-        $this->admin->deconnecter();
-        header("Location: .");
-    }
 
     private function afficherFormulaireFlux() {
         global $rep, $vues;
         require($rep.$vues['formulaireFlux']);
+    }
+
+    private function supprimerFlux()
+    {
+        $model = new FluxModel();
+        $id = $_REQUEST['idFlux']??null;
+        if ($id != null) {
+            $id = Cleaner::NettoyageInt($id);
+            $model->supprimer($id);
+        }
+        $this->afficherFlux();
     }
 
     private function ajouterFlux()
@@ -122,5 +136,10 @@ class adminControler{
             $model->supprimerFlux($id);
         }
         $this->afficherFlux();
+    }
+    
+    private function afficherPageParams() {
+        global $rep, $vues;
+        require($rep.$vues['params']);
     }
 }

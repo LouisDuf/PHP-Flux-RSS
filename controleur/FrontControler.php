@@ -11,7 +11,8 @@ class FrontControler
 {
     public function __construct()
     {
-        $TabAdmin = array('afficherFlux', 'ajouterFlux', 'supprimerFlux', 'deconnexion', 'pageAdmin');
+        $TabAdmin = array('afficherFlux', 'ajouterFlux', 'supprimerFlux', 'deconnexion', 'pageAjoutFlux', 'pageParams');
+        
         session_start();
         try {
             if (isset($_REQUEST['action'])) {

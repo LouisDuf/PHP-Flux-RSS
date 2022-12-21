@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS tflux (
 
 CREATE TABLE IF NOT EXISTS tnews (
     id SERIAL PRIMARY KEY NOT NULL,
-    flux INT NOT NULL REFERENCES tflux (id),
+    flux INT NOT NULL REFERENCES tflux (id) ON DELETE CASCADE,
     title varchar(255) NOT NULL,
     url varchar(1000) NOT NULL,
     guid varchar(1000) NOT NULL,
@@ -61,8 +61,9 @@ CREATE TABLE IF NOT EXISTS tParams (
     value VARCHAR(255)
     );
 
-INSERT INTO tParams VALUES("nbNewsPage","50");
-INSERT INTO tParams VALUES("nbFluxPage","20");
+
+INSERT INTO tParams VALUES('nbFluxParPage', 10);
+INSERT INTO tParams VALUES('nbNewsParPage', 10);
 
 -- --------------------------------------------------------
 
