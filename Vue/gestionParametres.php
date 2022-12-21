@@ -62,6 +62,27 @@
                             </td>
                         </form>
                     </tr>
+                    <tr>
+                        <form action="index.php?action=setNewsMax" method="post">
+                            <th scope="row">Nombre de flux par page</th>
+                            <td>
+                                <?php
+                                if (isset($nbNewsMax)) {
+                                    echo $nbNewsMax;
+                                }
+                                else {
+                                    echo 'Unknown';
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Value" name="nbNewsMax" required="required"/>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" type="submit">Valider</button>
+                            </td>
+                        </form>
+                    </tr>
                 </tbody>
             </table>
             <?php

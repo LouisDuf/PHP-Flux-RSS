@@ -42,6 +42,12 @@ class NewsGateway
         $this->co->executequery($query, $params);
     }
 
+    public function removeOldestNews() {
+        $query = 'DELETE FROM tnews WHERE datePub=(SELECT min(datePub)
+                                                   FROM tnews)';
+        $this->co->executeQuery($query);
+    }
+
 
     /****************** Getters ******************/
     public function getNewsById(int $id) : News

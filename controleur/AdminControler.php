@@ -63,6 +63,9 @@ class adminControler{
                 case 'setFluxParPage':
                     $this->setFluxParPage();
                     break;
+                case 'setNewsMax':
+                    $this->setNewsMax();
+                    break;
                 default:
                     echo 'Ce message ne devrait jamais être vu';
                     break;
@@ -142,6 +145,7 @@ class adminControler{
         $model = new Model();
         $nbNewsParPage = $model->getNbNewsParPage();
         $nbFluxParPage = $model->getNbFluxParPage();
+        $nbNewsMax = $model->getNbNewsMax();
         if ($msg != null) {
             $message=$msg;
         }
@@ -172,6 +176,22 @@ class adminControler{
             $msg = "Valeur de paramètre invalide !";
         }
         $model->setNbFluxParPage($new_value);
+        $this->afficherPageParams($msg);
+    }
+
+    private function setNewsMax() {
+        $msg=null;
+        $model = new Model();
+        $old_value = $model->getNbNewsMax();
+        $new_value = Cleaner::NettoyageInt($_POST['nbNewsMax'])??$old_value;
+        if ($new_value < 0 || !Validation::val_int($new_value)) {
+            $new_value = $old_value;
+            $msg = "Valeur de paramètre invalide !";
+        }
+        $model->setNbNewsMax($new_value);
+        if ($new_value<$old_value) {
+            $model->faireLeMenageDansLesNews();
+        }
         $this->afficherPageParams($msg);
     }
 }
