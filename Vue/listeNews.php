@@ -37,7 +37,7 @@
                                 echo "<td>".$news->getUrl()."</td>";
                                 echo "<td>".$news->getGuid()."</td>";
                                 echo "<td>".$news->getDescription()."</td>";
-                                echo '<td>'.$news->getDate()->format('Y-m-d H:i:s').'</td>';
+                                echo '<td>'.$news->getDate().'</td>';
                                 echo '</tr>';
                             }
                         }

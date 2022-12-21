@@ -83,7 +83,7 @@ class NewsGateway
                 $row["description"],
                 $row["url"],
                 $row["guid"],
-                $row['datepub'],
+                DateTime::createFromFormat('Y-m-d',$row['datepub']),
                 $row["flux"]);
         }
         return $liste_News;
