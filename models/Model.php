@@ -2,6 +2,7 @@
 
 namespace models;
 
+use DOMDocument;
 use metier\Flux;
 use metier\News;
 use config\Connection;
@@ -26,21 +27,79 @@ class Model
         $this->params_g = new ParamsGateway(new Connection($base, $login, $mdp));
     }
 
-
-    /****************** Méthodes d'affichage ******************/
-
     /****************** Méthodes Ajout/Suppression  ******************/
  
     // Ajout
+    public function loadNews(Flux $flux)
+    {
+        $parseur = new DOMDocument();
+        $parseur->load($flux->getLink());
+        //$parseur->load("http://feeds.feedburner.com/phoenixjp/");
+        //$parseur->load("http://feeds.bbci.co.uk/news/world/rss.xml");
+
+        $maList = array();
+        foreach ($parseur->getElementsByTagName("item") as $key => $node)
+        {
+            $id = $key;
+            if (isset($node->getElementsByTagName("title")[0]->nodeValue))
+            {
+                $titre = $node->getElementsByTagName("title")[0]->nodeValue;
+
+            }
+            else
+            {
+                $titre = "titre_Vide";
+            }
+            if (isset($node->getElementsByTagName("description")[0]->nodeValue))
+            {
+                $description = $node->getElementsByTagName("description")[0]->nodeValue;
+            }
+            else
+            {
+                $description = "description_Vide";
+            }
+
+            if (isset($node->getElementsByTagName("link")[0]->nodeValue))
+            {
+                $link = $node->getElementsByTagName("link")[0]->nodeValue;
+            }
+            else
+            {
+                $link = "liens_Vide";
+            }
+            if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
+            {
+                $date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
+            }
+            else
+            {
+                $date = "date_Vide";
+            }
+
+            $item = [
+                'id' => $id,
+                'title' => $titre,
+                'desc' => $description,
+                'link' => $link,
+                'date' => $date,
+            ];
+            $maList[] = $item;
+
+            if(count($maList) != 500)
+            {
+                $newNews = new News($id, $titre, $description, $link, $link, $date, $flux->getId());
+                $this->news_g->gAddNews($newNews);
+            }
+            else
+            {
+                echo "la liste est pleine";
+            }
+        }
+    }
 
     public function addFlux($flux): void
     {
         $this->flux_g->gAddFlux($flux);
-    }
-
-    public function addNews($newNews): void
-    {
-        $this->news_g->gAddNews($newNews);
     }
 
     // Suppression
@@ -77,10 +136,10 @@ class Model
         return $this->flux_g->getNbFlux();
     }
 
-    // News 
+    // News
     public function getAllNews(): array
     {
-        return $this->news_g->gAfficherNews();
+        return $this->news_g->getAllNews();
     }
 
     public function getNewsByPage($page, $nbPage): array

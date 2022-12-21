@@ -17,30 +17,9 @@ class NewsGateway
         $this->co = $co;
     }
 
-    /****************** Méthodes d'affichage ******************/
-    public function gAfficherNews(): array
-    {
-        $querry = "SELECT * FROM tnews";
-        $this->co->executeQuery($querry);
-
-        $results = $this->co->getResults();
-
-        $liste_News = array();
-        foreach ($results as $row)
-        {
-            $liste_News[] = new News(intval(
-                $row['id']),
-                $row['title'],
-                $row['description'],
-                $row["url"],
-                $row["guid"],
-                DateTime::createFromFormat('Y-m-d', $row['datepub']),
-                intval($row['flux']));
-        }
-        return $liste_News;
-    }
-
     /****************** Méthodes Ajout/Suppression  ******************/
+
+    // Ajout
     public function gAddNews(News $n): void
     {
         $querry = "INSERT INTO tnews(flux, titre, description, url, guid, date) VALUES (:flux, :titre, :descirpion, :url, :guid, :date)";
@@ -54,7 +33,7 @@ class NewsGateway
         $this->co->executeQuery($querry, $params);
     }
 
-
+    // Suppression
     public function gSupprimerNews(int $idNews): void
     {
         $query = 'DELETE FROM tnews WHERE id=:id';
@@ -100,6 +79,28 @@ class NewsGateway
                 $row["guid"],
                 DateTime::createFromFormat('Y-m-d', $row['datepub']),
                 $row["flux"]);
+        }
+        return $liste_News;
+    }
+
+    public function getAllNews(): array
+    {
+        $querry = "SELECT * FROM tnews";
+        $this->co->executeQuery($querry);
+
+        $results = $this->co->getResults();
+
+        $liste_News = array();
+        foreach ($results as $row)
+        {
+            $liste_News[] = new News(intval(
+                $row['id']),
+                $row['title'],
+                $row['description'],
+                $row["url"],
+                $row["guid"],
+                DateTime::createFromFormat('Y-m-d', $row['datepub']),
+                intval($row['flux']));
         }
         return $liste_News;
     }

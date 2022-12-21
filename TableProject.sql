@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS tParams;
 CREATE TABLE IF NOT EXISTS tflux (
     id SERIAL PRIMARY KEY NOT NULL,
     title varchar(200) NOT NULL,
-    path varchar(500) NOT NULL,
+    path varchar(500),                                     -- Non utilisé
     link varchar(1000) NOT NULL,
     description varchar(2000) NOT NULL
     );
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS tnews (
     flux INT NOT NULL REFERENCES tflux (id) ON DELETE CASCADE,
     title varchar(255) NOT NULL,
     url varchar(1000) NOT NULL,
-    guid varchar(1000) NOT NULL,
+    guid varchar(1000),                                    -- Non utilisé
     description varchar(5000) NOT NULL,
     datePub date NOT NULL
     );

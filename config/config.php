@@ -8,14 +8,15 @@ $rep=__DIR__.'/../';
 //$dConfig['includes']= array('controleur/Validation.php');
 
 //BD
-//$base="pgsql:host=localhost;dbname=louloudb";
-//$login="loulou";
-//$mdp="dbloulou";
+
+$base="pgsql:host=localhost;dbname=louloudb";
+$login="loulou";
+$mdp="dbloulou";
 
 
-$base="pgsql:host=localhost;dbname=dbprojetphp";
-$login="remi";
-$mdp="achanger";
+//$base="pgsql:host=localhost;dbname=dbprojetphp";
+//$login="remi";
+//$mdp="achanger";
 
 
 //Vues
@@ -25,6 +26,5 @@ $vues['login']='Vue/connection.php';
 $vues['flux']='Vue/listeFlux.php';
 $vues['formulaireFlux']='Vue/formulaireFlux.php';
 $vues['params']='Vue/gestionParametres.php';
-
 
 ?>
