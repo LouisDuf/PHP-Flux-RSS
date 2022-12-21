@@ -55,7 +55,7 @@ class adminControler{
                     $this->ajouterFlux();
                     break;
                 case 'pageParams':
-                    $this->afficherPageParams();
+                    $this->afficherPageParams(null);
                     break;
                 case 'setNewsParPage':
                     $this->setNewsParPage();
@@ -136,35 +136,42 @@ class adminControler{
         $this->afficherFlux();
     }
     
-    private function afficherPageParams() {
+    private function afficherPageParams($msg) {
         global $rep, $vues;
 
         $model = new Model();
         $nbNewsParPage = $model->getNbNewsParPage();
         $nbFluxParPage = $model->getNbFluxParPage();
+        if ($msg != null) {
+            $message=$msg;
+        }
 
         require($rep.$vues['params']);
     }
 
     private function setNewsParPage() {
+        $msg=null;
         $model = new Model();
         $old_value = $model->getNbNewsParPage();
         $new_value = Cleaner::NettoyageInt($_POST['nbNewsParPage'])??$old_value;
         if ($new_value < 0 || !Validation::val_int($new_value)) {
             $new_value = $old_value;
+            $msg="Valeur de paramètre invalide !";
         }
         $model->setNbNewsParPage($new_value);
-        $this->afficherPageParams();
+        $this->afficherPageParams($msg);
     }
 
     private function setFluxParPage() {
+        $msg=null;
         $model = new Model();
         $old_value = $model->getNbFluxParPage();
         $new_value = Cleaner::NettoyageInt($_POST['nbFluxParPage'])??$old_value;
         if ($new_value < 0 || !Validation::val_int($new_value)) {
             $new_value = $old_value;
+            $msg = "Valeur de paramètre invalide !";
         }
         $model->setNbFluxParPage($new_value);
-        $this->afficherPageParams();
+        $this->afficherPageParams($msg);
     }
 }

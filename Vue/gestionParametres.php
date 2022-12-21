@@ -64,6 +64,11 @@
                     </tr>
                 </tbody>
             </table>
+            <?php
+            if (isset($message)) {
+                echo '<p>'.$message.'</p>';
+            }
+            ?>
         </div>
     </body>
 </html>
