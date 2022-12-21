@@ -9,6 +9,8 @@ use config\Connection;
 use gateway\NewsGateway;
 use gateway\FluxGateway;
 use gateway\ParamsGateway;
+use DateTime;
+use config\Cleaner;
 
 class Model
 {
@@ -43,7 +45,7 @@ class Model
             $id = $key;
             if (isset($node->getElementsByTagName("title")[0]->nodeValue))
             {
-                $titre = $node->getElementsByTagName("title")[0]->nodeValue;
+                $titre = Cleaner::NettoyageStr($node->getElementsByTagName("title")[0]->nodeValue);
 
             }
             else
@@ -52,7 +54,7 @@ class Model
             }
             if (isset($node->getElementsByTagName("description")[0]->nodeValue))
             {
-                $description = $node->getElementsByTagName("description")[0]->nodeValue;
+                $description = Cleaner::NettoyageStr($node->getElementsByTagName("description")[0]->nodeValue);
             }
             else
             {
@@ -61,7 +63,7 @@ class Model
 
             if (isset($node->getElementsByTagName("link")[0]->nodeValue))
             {
-                $link = $node->getElementsByTagName("link")[0]->nodeValue;
+                $link = Cleaner::NettoyageURL($node->getElementsByTagName("link")[0]->nodeValue);
             }
             else
             {
@@ -69,7 +71,10 @@ class Model
             }
             if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
             {
-                $date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
+                //var_dump($node->getElementsByTagName("pubDate")[0]->nodeValue);
+                $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
+                //var_dump($date);
+                //$date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
             }
             else
             {

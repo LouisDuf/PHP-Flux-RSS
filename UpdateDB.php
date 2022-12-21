@@ -1,6 +1,6 @@
 <?php
 
-use controleur\FrontControler;
+use models\Model;
 
 //chargement config
 require_once(__DIR__ . '/config/config.php');
@@ -17,13 +17,11 @@ $myLibLoader = new SplClassLoader('gateway', './');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('metier', './');
 $myLibLoader->register();
- 
-$model = new models\Model();
+
+
+$model = new Model();
 $fluxs = $model->getAllFlux();
 
 foreach($fluxs as $flux){
     $model->loadNews($flux);
 }
-
-$controler_user = new FrontControler();
-

@@ -83,7 +83,7 @@ class NewsGateway
                 $row["description"],
                 $row["url"],
                 $row["guid"],
-                DateTime::createFromFormat('Y-m-d', $row['datepub']),
+                DateTime::createFromFormat('D, d M Y H:i:s T', $row['datepub']),
                 $row["flux"]);
         }
         return $liste_News;
@@ -105,7 +105,7 @@ class NewsGateway
                 $row['description'],
                 $row["url"],
                 $row["guid"],
-                DateTime::createFromFormat('Y-m-d', $row['datepub']),
+                DateTime::createFromFormat('D, d M Y H:i:s T', $row['datepub']),
                 intval($row['flux']));
         }
         return $liste_News;

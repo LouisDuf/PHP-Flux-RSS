@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS tnews (
     guid            varchar(1000)       NOT NULL,                                           -- Non utilisé
     description     varchar(5000)       NOT NULL,
     datePub         date                NOT NULL
-
     );
 
 
