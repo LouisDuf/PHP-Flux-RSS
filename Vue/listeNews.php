@@ -8,13 +8,13 @@
         require("navbar.php")
         ?>
         <div class="page-content page-container" id="page-content">
-            <div class="d-flex justify-content-end">
+            <!--<div class="d-flex justify-content-end">
                 <a href="index.php?action=pageAjoutFlux">
                 <button type="button" class="btn btn-primary">
                     Ajouter News
                 </button>
                 </a>
-            </div>
+            </div>-->
             <div>
                 <table class="table">
                     <thead>
