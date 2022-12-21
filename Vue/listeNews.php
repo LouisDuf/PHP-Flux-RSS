@@ -19,8 +19,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Flux</th>
+                            <th scope="col">News</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Url</th>
                             <th scope="col">Guid</th>
@@ -30,15 +29,15 @@
                     </thead>
                     <tbody>
                     <?php
-                        if (isset($tabFlux)) {
-                            foreach ($tabFlux as $flux) {
+                        if (isset($tabNews)) {
+                            foreach ($tabNews as $news) {
                                 echo '<tr class="table-active">';
-                                echo '<th scope="row">'.$flux->getId().'</th>';
-                                echo "<td>".$flux->getTitle()."</td>";
-                                echo "<td>".$flux->getPath()."</td>";
-                                echo "<td>".$flux->getLink()."</td>";
-                                echo "<td>".$flux->getDescription()."</td>";
-                                echo '<td><a href="index.php?action=supprimerFlux&idFlux='.$flux->getId().'"><button>Supprimer</button></a></td>';
+                                echo '<th scope="row">'.$news->getId().'</th>';
+                                echo "<td>".$news->getTitle()."</td>";
+                                echo "<td>".$news->getUrl()."</td>";
+                                echo "<td>".$news->getGuid()."</td>";
+                                echo "<td>".$news->getDescription()."</td>";
+                                echo '<td>'.$news->getDate()->format('Y-m-d H:i:s').'</td>';
                                 echo '</tr>';
                             }
                         }
