@@ -36,8 +36,6 @@ class Model
     {
         $parseur = new DOMDocument();
         $parseur->load($flux->getLink());
-        //$parseur->load("http://feeds.feedburner.com/phoenixjp/");
-        //$parseur->load("http://feeds.bbci.co.uk/news/world/rss.xml");
 
         $maList = array();
         foreach ($parseur->getElementsByTagName("item") as $key => $node)
@@ -73,6 +71,7 @@ class Model
             {
                 //var_dump($node->getElementsByTagName("pubDate")[0]->nodeValue);
                 $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
+                //$date = $date->format('Y-m-d');
                 //var_dump($date);
                 //$date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
             }

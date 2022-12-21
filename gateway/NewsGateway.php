@@ -22,13 +22,13 @@ class NewsGateway
     // Ajout
     public function gAddNews(News $n): void
     {
-        $querry = "INSERT INTO tnews(flux, titre, description, url, guid, date) VALUES (:flux, :titre, :descirpion, :url, :guid, :date)";
+        $querry = "INSERT INTO tnews(flux, title, url, guid, description, datePub) VALUES (:flux, :title, :url, :guid, :description, :datePub)";
         $params = array("flux" => array($n->getFlux(), PDO::PARAM_STR),
-                        "titre" => array($n->getTitle(), PDO::PARAM_STR),
-                        "description" => array($n->getDescription(), PDO::PARAM_STR),
+                        "title" => array($n->getTitle(), PDO::PARAM_STR),
                         "url" => array($n->getUrl(), PDO::PARAM_STR),
                         "guid" => array($n->getGuid(), PDO::PARAM_STR),
-                        "date" => array($n->getDate(), PDO::PARAM_STR),
+                        "description" => array($n->getDescription(), PDO::PARAM_STR),
+                        "datePub" => array($n->getDate(), PDO::PARAM_STR),
         );
         $this->co->executeQuery($querry, $params);
     }
@@ -83,7 +83,7 @@ class NewsGateway
                 $row["description"],
                 $row["url"],
                 $row["guid"],
-                DateTime::createFromFormat('D, d M Y H:i:s T', $row['datepub']),
+                $row['datepub'],
                 $row["flux"]);
         }
         return $liste_News;

@@ -4,7 +4,6 @@ namespace controleur;
 
 use Exception;
 use config\Cleaner;
-use config\Validation;
 use models\AdminModel;
 use models\Model;
 use PDOException;
