@@ -1,6 +1,6 @@
 <?php
 
-namespace modele;
+namespace metier;
 
 class Flux
 {
@@ -9,9 +9,6 @@ class Flux
     private string $path;
     private string $link;
     private string $description;
-    private string $image_url;
-    private string $image_titre;
-    private string $image_link;
 
     /**
      * @param int $id
@@ -23,16 +20,13 @@ class Flux
      * @param string $image_titre
      * @param string $image_link
      */
-    public function __construct(int $id, string $title, string $path, string $link, string $description, string $image_url, string $image_titre, string $image_link)
+    public function __construct(int $id, string $title, string $path, string $link, string $description)
     {
         $this->id = $id;
         $this->title = $title;
         $this->path = $path;
         $this->link = $link;
         $this->description = $description;
-        $this->image_url = $image_url;
-        $this->image_titre = $image_titre;
-        $this->image_link = $image_link;
     }
 
     /**
@@ -74,29 +68,4 @@ class Flux
     {
         return $this->description;
     }
-
-    /**
-     * @return string
-     */
-    public function getImageUrl(): string
-    {
-        return $this->image_url;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageTitre(): string
-    {
-        return $this->image_titre;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageLink(): string
-    {
-        return $this->image_link;
-    }
-
 }

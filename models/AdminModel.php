@@ -1,9 +1,12 @@
 <?php
 
-namespace modele;
+namespace models;
 
 use config\Cleaner;
 use config\Connection;
+use gateway\AdminGateway;
+use metier\Admin;
+
 
 class AdminModel
 {
@@ -13,6 +16,7 @@ class AdminModel
     public function __construct(){}
 
     /**
+     * Vérifie si nous avons bien a faire un admin
      * @return Admin|null
      */
     public function isAdmin(){

@@ -2,9 +2,12 @@
 
 namespace config;
 
+use Exception;
+
 class Validation {
 
-    static function val_action($action) {
+    static function val_action($action): void
+    {
 
         if (!isset($action)) {
             throw new Exception('pas d\'action');
@@ -35,4 +38,3 @@ class Validation {
     }
 
 }
-?>
