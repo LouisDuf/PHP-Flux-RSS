@@ -17,6 +17,10 @@ $myLibLoader = new SplClassLoader('config', './');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('models', './');
 $myLibLoader->register();
+$myLibLoader = new SplClassLoader('gateway', './');
+$myLibLoader->register();
+$myLibLoader = new SplClassLoader('metier', './');
+$myLibLoader->register();
  
 $controler_user = new \controleur\FrontControler();
 

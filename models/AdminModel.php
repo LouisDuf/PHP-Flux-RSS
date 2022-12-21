@@ -4,6 +4,9 @@ namespace models;
 
 use config\Cleaner;
 use config\Connection;
+use gateway\AdminGateway;
+use metier\Admin;
+
 
 class AdminModel
 {
