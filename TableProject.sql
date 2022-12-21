@@ -61,15 +61,13 @@ CREATE TABLE IF NOT EXISTS tParams (
     value VARCHAR(255)
     );
 
-
-INSERT INTO tParams VALUES('nbFluxParPage', 10);
-INSERT INTO tParams VALUES('nbNewsParPage', 10);
-
 -- --------------------------------------------------------
 
---
--- Pseudo donné
---
+INSERT INTO tParams VALUES('nbFluxParPage', 5);
+INSERT INTO tParams VALUES('nbNewsParPage', 5);
+
+INSERT INTO tadmin VALUES('admin0', '$argon2i$v=19$m=65536,t=4,p=1$R0U5U3RRdjdYd0JFYm1weQ$aNf7IdQIZXKlX7nfT9GZNcEievYhx3n6+OOoTgTcwOE'); -- vrai mot de passe = mdp
+
 INSERT INTO tflux(title, path, link, description) VALUES('Fnac',
                                                          'https://leclaireur.fnac.com/feed/',
                                                          'https://leclaireur.fnac.com/feed/',
@@ -99,6 +97,6 @@ INSERT INTO tflux(title, path, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/monde/proche-orient.rss',
                                                          'Flux RSS France Info : rubrique Proche-Orient');
 
-INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
 
-INSERT INTO tadmin VALUES('admin0', '$argon2i$v=19$m=65536,t=4,p=1$R0U5U3RRdjdYd0JFYm1weQ$aNf7IdQIZXKlX7nfT9GZNcEievYhx3n6+OOoTgTcwOE'); -- vrai mot de passe = mdp
+
+INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
