@@ -68,7 +68,7 @@ class SplClassLoader
     /**
      * Gets the namespace seperator used by classes in the namespace of this class loader.
      *
-     * @return void
+     * @return string
      */
     public function getNamespaceSeparator()
     {

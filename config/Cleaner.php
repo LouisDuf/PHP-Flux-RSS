@@ -9,8 +9,6 @@
 
 namespace config;
 
-use PDO;
-
 class Cleaner {
 
     public static function NettoyageURL($url){

@@ -1,6 +1,6 @@
 <?php
 
-namespace modele;
+namespace metier;
 
 class Admin
 {

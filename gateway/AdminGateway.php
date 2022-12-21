@@ -1,7 +1,8 @@
 <?php
 
-namespace modele;
+namespace gateway;
 
+use PDO;
 use config\Connection;
 
 class AdminGateway
@@ -20,9 +21,10 @@ class AdminGateway
      * @param $login
      * @return mixed
      */
-    public function getPassword($login){
+    public function getPassword($login): mixed
+    {
         $querry = "SELECT mdp FROM tadmin WHERE login=:login";
-        $params = array(':login' => array($login, \PDO::PARAM_STR));
+        $params = array(':login' => array($login, PDO::PARAM_STR));
 
         $this->co->executeQuery($querry, $params);
 

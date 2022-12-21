@@ -3,16 +3,16 @@
 namespace controleur;
 
 use config\Cleaner;
-use controleur\UserControler;
-use controleur\AdminControler;
-use modele\AdminModel;
+use Exception;
+use models\AdminModel;
+use PDOException;
 
 class FrontControler
 {
-
     public function __construct()
     {
         $TabAdmin = array('afficherFlux', 'ajouterFlux', 'supprimerFlux', 'deconnexion', 'pageAjoutFlux', 'pageParams');
+        
         session_start();
         try {
             if (isset($_REQUEST['action'])) {
@@ -34,11 +34,7 @@ class FrontControler
             } else {
                 new UserControler();
             }
-        } catch (\PDOException $e) {
-            global $rep, $vues;
-            $tab_erreur[] = "Erreur : ".$e->getMessage();
-            require($rep.$vues["erreur"]);
-        } catch (\Exception $e) {
+        } catch (PDOException|Exception $e) {
             global $rep, $vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
             require($rep.$vues["erreur"]);
