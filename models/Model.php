@@ -7,6 +7,7 @@ use metier\News;
 use config\Connection;
 use gateway\NewsGateway;
 use gateway\FluxGateway;
+use gateway\ParamsGateway;
 
 class Model
 {
@@ -14,6 +15,7 @@ class Model
     /****************** Déclaration des varaibles GateWays ******************/
     private NewsGateway $news_g;
     private FluxGateway $flux_g;
+    private ParamsGateway $params_g;
 
     /****************** Constructeur ******************/
 
@@ -21,6 +23,7 @@ class Model
         global $base, $login, $mdp;
         $this->news_g = new NewsGateway(new Connection($base, $login, $mdp));
         $this->flux_g = new FluxGateway(new Connection($base, $login, $mdp));
+        $this->params_g = new ParamsGateway(new Connection($base, $login, $mdp));
     }
 
 
@@ -92,5 +95,23 @@ class Model
     public function getNewsById($idNews): News
     {
         return $this->news_g->getNewsById($idNews);
+    }
+
+    public function getNbNewsParPage() {
+        return $this->params_g->getNbNewsParPage();
+    }
+
+    public function getNbFluxParPage() {
+        return $this->params_g->getNbFluxParPage();
+    }
+
+    /****************** Setters ******************/
+
+    public function setNbNewsParPage(int $newValue) {
+        return $this->params_g->setNbNewsParPage($newValue);
+    }
+
+    public function setNbFluxParPage(int $newValue) {
+        return $this->params_g->setNbFluxParPage($newValue);
     }
 }

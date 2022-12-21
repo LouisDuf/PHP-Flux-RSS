@@ -25,8 +25,8 @@
                             <th scope="row">Nombre de News par page</th>
                             <td>
                                 <?php
-                                if (isset($nbFluxParPage)) {
-                                    echo $nbFluxParPage;
+                                if (isset($nbNewsParPage)) {
+                                    echo $nbNewsParPage;
                                 }
                                 else {
                                     echo 'Unknown';

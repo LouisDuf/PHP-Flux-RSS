@@ -45,7 +45,7 @@ class adminControler{
                 case 'afficherFlux':
                     $this->afficherFlux();
                     break;
-                case 'pageAdmin':
+                case 'pageAjoutFlux':
                     $this->afficherFormulaireFlux();
                     break;
                 case 'supprimerFlux':
@@ -62,6 +62,9 @@ class adminControler{
                     break;
                 case 'setFluxParPage':
                     $this->setFluxParPage();
+                    break;
+                default:
+                    echo 'Ce message ne devrait jamais être vu';
                     break;
             }
         } catch (\PDOException $e) {
@@ -89,7 +92,7 @@ class adminControler{
             $page = 1;
         }
 
-        $nbFluxByPage=2;
+        $nbFluxByPage=$model->getNbFluxParPage();
         $tabFlux = $model->getFluxByPage($page, $nbFluxByPage);
 
         $fluxTot = $model->getNbFlux();
@@ -135,22 +138,33 @@ class adminControler{
     
     private function afficherPageParams() {
         global $rep, $vues;
+
+        $model = new Model();
+        $nbNewsParPage = $model->getNbNewsParPage();
+        $nbFluxParPage = $model->getNbFluxParPage();
+
         require($rep.$vues['params']);
     }
 
     private function setNewsParPage() {
-        global $rep, $vues;
-
-
-
-        require($rep.$vues['params']);
+        $model = new Model();
+        $old_value = $model->getNbNewsParPage();
+        $new_value = Cleaner::NettoyageInt($_POST['nbNewsParPage'])??$old_value;
+        if ($new_value < 0 || !Validation::val_int($new_value)) {
+            $new_value = $old_value;
+        }
+        $model->setNbNewsParPage($new_value);
+        $this->afficherPageParams();
     }
 
     private function setFluxParPage() {
-        global $rep, $vues;
-
-
-
-        require($rep.$vues['params']);
+        $model = new Model();
+        $old_value = $model->getNbFluxParPage();
+        $new_value = Cleaner::NettoyageInt($_POST['nbFluxParPage'])??$old_value;
+        if ($new_value < 0 || !Validation::val_int($new_value)) {
+            $new_value = $old_value;
+        }
+        $model->setNbFluxParPage($new_value);
+        $this->afficherPageParams();
     }
 }

@@ -64,10 +64,11 @@ class UserControler
                 $page=1;
             }
         }
-        $tabNews = $model->getNewsByPage($page, 10);
+        $nbNewsParPage = $model->getNbNewsParPage();
+        $tabNews = $model->getNewsByPage($page, $nbNewsParPage);
 
         $nbNewsTot = $model->getNbNews();
-        $pageMax = ceil($nbNewsTot/10);
+        $pageMax = ceil($nbNewsTot/$nbNewsParPage);
 
         require($rep.$vues['accueil']);
     }

@@ -7,47 +7,19 @@
             require("navbar.php")
         ?>
         <form action="index.php?action=ajouterFlux" method="post">
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="title" class="form-control" required="required" name="title"/>
-                <label class="form-label" for="title">Titre</label>
-            </div>
+            <input type="text" class="form-control" placeholder="Titre" name="title" required="required"/>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="path" class="form-control" required="required" name="path"/>
-                <label class="form-label" for="path">Chemin</label>
-            </div>
+            <input type="text" class="form-control" placeholder="Chemin" name="path" required="required"/>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="link" class="form-control" required="required" name="link"/>
-                <label class="form-label" for="link">Lien</label>
-            </div>
+            <input type="text" class="form-control" placeholder="Lien" name="link" required="required"/>
 
-            <!-- Message input -->
-            <div class="form-outline mb-4">
-                <textarea class="form-control" id="description" rows="4" required="required" name="description"></textarea>
-                <label class="form-label" for="description">Description</label>
-            </div>
+            <textarea class="form-control" rows="4" placeholder="Description" name="description" required="required"></textarea>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="image-url" class="form-control" name="image-url"/>
-                <label class="form-label" for="image-url">Image URL</label>
-            </div>
+            <input type="text" class="form-control" placeholder="URL de l'image" name="image-url"/>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="image-title" class="form-control" name="image-title"/>
-                <label class="form-label" for="image-title">Image Titre</label>
-            </div>
+            <input type="text" class="form-control" placeholder="Titre de l'image" name="image-title"/>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="image-link" class="form-control" name="image-link"/>
-                <label class="form-label" for="image-link">Image Lien</label>
-            </div>
+            <input type="text" class="form-control" placeholder="Lien de l'image" name="image-link"/>
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-4">Valider l'ajout</button>
