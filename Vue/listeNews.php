@@ -31,7 +31,7 @@
                                 echo '<td>'.$news->getDate().'</td>';
                                 //echo '<th scope="row">'.$news->getId().'</th>';
                                 echo "<td>".$news->getTitle()."</td>";
-                                echo "<td>".$news->getUrl()."</td>";
+                                echo '<td><a href="'.$news->getUrl().'" target="_blank">'.$news->getUrl().'</a></td>';
                                 //echo "<td>".$news->getGuid()."</td>";
                                 echo "<td>".$news->getDescription()."</td>";
                                 echo '</tr>';

@@ -2,15 +2,16 @@
 
 namespace Config;
 
+	use PDO;
 
-	class Connection extends \PDO {
+class Connection extends PDO {
 
 		private $stmt;
 
 		public function __construct(string $dsn, string $username, string $password)
 		{
 			parent::__construct($dsn,$username,$password);
-			$this->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+			$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} 
 		 
 

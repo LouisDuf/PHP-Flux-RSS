@@ -130,11 +130,11 @@ class adminControler{
         $model = new Model();
 
         $title = Cleaner::NettoyageStr($_POST['title'])??null;
-        $path = Cleaner::NettoyageStr($_POST['path'])??null;
+        //$path = Cleaner::NettoyageStr($_POST['path'])??null;
         $link = Cleaner::NettoyageURL($_POST['link'])??null;
         $desc = Cleaner::NettoyageStr($_POST['description'])??null;
 
-        $flux = new Flux(-1, $title, $path, $link, $desc);
+        $flux = new Flux(-1, $title, $link, $desc);
 
         $model->addFlux($flux);
 

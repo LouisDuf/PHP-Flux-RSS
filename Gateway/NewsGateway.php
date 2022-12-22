@@ -155,7 +155,7 @@ class NewsGateway
                 $row['description'],
                 $row["url"],
                 $row["guid"],
-                DateTime::createFromFormat('Y-m-d H:i:s',$row['datepub']),
+                DateTime::createFromFormat('Y-m-d',$row['datepub']),
                 intval($row['flux']));
         }
         return $liste_News;

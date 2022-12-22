@@ -29,7 +29,6 @@ class FluxGateway
         foreach ($results as $row) {
             $liste[] = new Flux($row["id"],
                 $row["title"],
-                $row["path"],
                 $row["link"],
                 $row["description"]);
         }
@@ -40,9 +39,8 @@ class FluxGateway
     /****************** Méthodes Ajout/Suppression  ******************/
     public function gAddFlux(Flux $flux): void
     {
-        $query = "INSERT INTO tflux(title, path, link, description) VALUES(:title, :path, :link, :description)";
+        $query = "INSERT INTO tflux(title, link, description) VALUES(:title, :link, :description)";
         $params = array("title"=>array($flux->getTitle(), PDO::PARAM_STR),
-                        "path"=>array($flux->getPath(), PDO::PARAM_STR),
                         "link"=>array($flux->getLink(), PDO::PARAM_STR),
                         "description"=>array($flux->getDescription(), PDO::PARAM_STR)
         );
@@ -74,7 +72,6 @@ class FluxGateway
         return new Flux(
             $results[0]["id"],
             $results[0]["title"],
-            $results[0]["path"],
             $results[0]["link"],
             $results[0]["description"]
         );
@@ -99,7 +96,6 @@ class FluxGateway
         foreach ( $results as $row) {
             $liste[] = new Flux($row["id"],
                 $row["title"],
-                $row["path"],
                 $row["link"],
                 $row["description"]);
         }

@@ -12,7 +12,7 @@
         <form action="index.php?action=ajouterFlux" method="post">
             <input type="text" class="form-control" placeholder="Titre" name="title" required="required"/>
 
-            <input type="text" class="form-control" placeholder="Chemin" name="path" required="required"/>
+            <!--<input type="text" class="form-control" placeholder="Chemin" name="path" required="required"/>-->
 
             <input type="text" class="form-control" placeholder="Lien" name="link" required="required"/>
 
