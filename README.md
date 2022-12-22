@@ -23,7 +23,7 @@ La mise à jour peut être éffectué depuis le site en étant connecté par le 
 
 ## Répartition du travail
 
-Tâches | Louis Dufour           | Rémi Regnault 
+**Tâches** | **Louis Dufour**           | **Rémi Regnault** 
  --- |------------------------| --- 
 **Métier**_News |                        | X 
 **Métier**_News |                        | X 
@@ -53,5 +53,5 @@ Tâches | Louis Dufour           | Rémi Regnault
 **Table_SQL**| X                      |(modifications des tables SQL)
 **Insertion des flux rss**_SQL|                        |X   
 **Autoloader**|                        |Faire en sorte que l'autoloader fonctionne
-**Pagination** | (légères corrections)  |Gestion de l'affichage en fonction du nombre de page
+**Pagination** |   |X
  
