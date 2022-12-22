@@ -13,6 +13,7 @@ use models\Model;
 use models\AdminModel;
 use config\Validation;
 use config\Cleaner;
+use models\Updater;
 
 class adminControler{
 
@@ -65,6 +66,9 @@ class adminControler{
                     break;
                 case 'setNewsMax':
                     $this->setNewsMax();
+                    break;
+                case 'updateData':
+                    $this->updateData();
                     break;
                 default:
                     echo 'Ce message ne devrait jamais être vu';
@@ -193,5 +197,11 @@ class adminControler{
             $model->faireLeMenageDansLesNews();
         }
         $this->afficherPageParams($msg);
+    }
+
+    function updateData()
+    {
+        $update = new Updater();
+        $this->afficherFlux();
     }
 }

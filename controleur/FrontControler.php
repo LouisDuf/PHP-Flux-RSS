@@ -12,7 +12,7 @@ class FrontControler
     public function __construct()
     {
 
-        $TabAdmin = array('deconnexion', 'afficherFlux', 'supprimerFlux', 'pageAjoutFlux', 'ajouterFlux', 'pageParams', 'setNewsParPage', 'setFluxParPage', 'setNewsMax');
+        $TabAdmin = array('deconnexion', 'afficherFlux', 'supprimerFlux', 'pageAjoutFlux', 'ajouterFlux', 'pageParams', 'setNewsParPage', 'setFluxParPage', 'setNewsMax', 'updateData');
 
         session_start();
 

@@ -43,6 +43,19 @@
                 </ul>
                 <!-- Left links -->
 
+                <div class="d-flex me-5">
+                    <?php
+                        if (isset($_SESSION['role']))
+                        {
+                        echo '<a href="index.php?action=updateData">
+                                    <button type="button" class="btn btn-link px-3 me-2">
+                                        Rechargement News
+                                    </button>
+                              </a>';
+                        }
+                        ?>
+                </div>
+
                 <div class="d-flex align-items-center">
                     <?php
                         if (isset($_SESSION['role'])) {
@@ -60,7 +73,6 @@
                                   </a>';
                         }
                     ?>
-
                 </div>
             </div>
             <!-- Collapsible wrapper -->

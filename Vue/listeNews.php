@@ -8,13 +8,7 @@
         require("navbar.php")
         ?>
         <div class="page-content page-container" id="page-content">
-            <!--<div class="d-flex justify-content-end">
-                <a href="index.php?action=pageAjoutFlux">
-                <button type="button" class="btn btn-primary">
-                    Ajouter News
-                </button>
-                </a>
-            </div>-->
+
             <div>
                 <table class="table">
                     <thead>
@@ -44,6 +38,7 @@
                     ?>
                     </tbody>
                 </table>
+
             </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
@@ -99,6 +94,7 @@
                         ?>
                     </ul>
                 </nav>
+
         </div>
     </body>
 </html>

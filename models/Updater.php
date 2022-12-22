@@ -5,7 +5,6 @@ namespace models;
 use config\Cleaner;
 use metier\Flux;
 use metier\News;
-use models\Model;
 use DOMDocument;
 use DateTime;
 
@@ -64,15 +63,6 @@ class Updater
             {
                 $date = "date_Vide";
             }
-
-            $item = [
-                'id' => $id,
-                'title' => $titre,
-                'desc' => $description,
-                'link' => $link,
-                'date' => $date,
-            ];
-            $maList[] = $item;
 
             $newNews = new News($id, $titre, $description, $link, $link, $date, $flux->getId());
             $this->model->addNews($newNews);

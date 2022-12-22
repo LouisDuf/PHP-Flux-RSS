@@ -2,15 +2,13 @@
 
 namespace models;
 
-use DOMDocument;
+
 use metier\Flux;
 use metier\News;
 use config\Connection;
 use gateway\NewsGateway;
 use gateway\FluxGateway;
 use gateway\ParamsGateway;
-use DateTime;
-use config\Cleaner;
 
 class Model
 {
