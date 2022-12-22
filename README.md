@@ -55,6 +55,3 @@ Tâches | Louis Dufour           | Rémi Regnault
 **Autoloader**|                        |Faire en sorte que l'autoloader fonctionne
 **Pagination** | (légères corrections)  |Gestion de l'affichage en fonction du nombre de page
  
-
-
-
