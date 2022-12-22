@@ -1,5 +1,9 @@
 <?php
 
+namespace Metier;
+
+    use DateTime;
+
     class News
     {
         private int $id;
@@ -7,7 +11,7 @@
         private string $description;
         private string $url;
         private string $guid;
-        private string $date;
+        private DateTime $date;
         private int $flux;
 
         /**
@@ -16,7 +20,7 @@
          * @param string $description
          * @param string $url
          * @param string $guid
-         * @param $date
+         * @param DateTime $date
          * @param int $flux
          */
         public function __construct(int $id,
@@ -24,7 +28,7 @@
                                     string $description,
                                     string $url,
                                     string $guid,
-                                    string $date,
+                                    DateTime $date,
                                     int $flux)
         {
             $this->id = $id;
@@ -81,7 +85,7 @@
          */
         public function getDate() : string
         {
-            return $this->date;
+            return $this->date->format('Y-m-d');
         }
 
         /**
@@ -93,4 +97,3 @@
         }
 
     }
-?>

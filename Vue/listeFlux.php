@@ -1,46 +1,53 @@
 <html>
     <head>
         <link rel=icon href=" https://cdn-icons-png.flaticon.com/512/7860/7860934.png"/>
-        <title>Liste - News</title>
+        <title>Liste - Flux</title>
         <meta charset="utf-8" />
     </head>
     <body>
         <?php
         require("navbar.php")
         ?>
-        <h2 class="mb-4 mt-3">Liste News :</h2>
         <div class="page-content page-container" id="page-content">
-
+            <div class="d-flex justify-content-between align-items-center ">
+                <h2 class="mb-4 mt-3">Liste Flux :</h2>
+                <div>
+                    <a href="index.php?action=pageAjoutFlux">
+                    <button type="button" class="btn btn-primary">
+                        Ajouter flux
+                    </button>
+                    </a>
+                </div>
+            </div>
             <div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">News</th>
+                            <th scope="col">#</th>
                             <th scope="col">Titre</th>
-                            <th scope="col">Url</th>
-                            <th scope="col">Guid</th>
+                            <th scope="col">Chemin</th>
+                            <th scope="col">Lien</th>
                             <th scope="col">Description</th>
-                            <th scope="col">DatePub</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        if (isset($tabNews)) {
-                            foreach ($tabNews as $news) {
+                        if (isset($tabFlux)) {
+                            foreach ($tabFlux as $flux) {
                                 echo '<tr class="table-active">';
-                                echo '<th scope="row">'.$news->getId().'</th>';
-                                echo "<td>".$news->getTitle()."</td>";
-                                echo "<td>".$news->getUrl()."</td>";
-                                echo "<td>".$news->getGuid()."</td>";
-                                echo "<td>".$news->getDescription()."</td>";
-                                echo '<td>'.$news->getDate().'</td>';
+                                echo '<th scope="row">'.$flux->getId().'</th>';
+                                echo "<td>".$flux->getTitle()."</td>";
+                                echo "<td>".$flux->getPath()."</td>";
+                                echo "<td>".$flux->getLink()."</td>";
+                                echo "<td>".$flux->getDescription()."</td>";
+                                echo '<td><a href="index.php?action=supprimerFlux&idFlux='.$flux->getId().'"><button>Supprimer</button></a></td>';
                                 echo '</tr>';
                             }
                         }
                     ?>
                     </tbody>
                 </table>
-
             </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
@@ -48,7 +55,7 @@
                         if (isset($page) && isset($pageMax)) {
                             if ($page>1) {
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?page=1">First</a>';
+                                echo '<a class="page-link" href="index.php?action=afficherFlux&page=1">First</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -59,7 +66,7 @@
                             if ($page>1) {
                                 $page_m1 = $page-1;
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?page='.$page_m1.'">Previous</a>';
+                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page_m1.'">Previous</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -69,13 +76,13 @@
 
 
                             echo '<li class="page-item active" aria-current="page">';
-                            echo '<a class="page-link" href="index.php?page='.$page.'">'.$page.'<span class="visually-hidden">(current)</span></a>';
+                            echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page.'">'.$page.'<span class="visually-hidden">(current)</span></a>';
                             echo '</li>';
 
                             if ($page<$pageMax) {
                                 $page_p1=$page+1;
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?page='.$page_p1.'">Next</a>';
+                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page_p1.'">Next</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -85,7 +92,7 @@
 
                             if ($page<$pageMax) {
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?page='.$pageMax.'">Last</a>';
+                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$pageMax.'">Last</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -96,7 +103,6 @@
                         ?>
                     </ul>
                 </nav>
-
         </div>
     </body>
 </html>
