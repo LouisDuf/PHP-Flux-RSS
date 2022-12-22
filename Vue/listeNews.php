@@ -15,12 +15,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">News</th>
+                            <th scope="col">DatePub</th>
+                            <!--<th scope="col">News</th>-->
                             <th scope="col">Titre</th>
                             <th scope="col">Url</th>
-                            <th scope="col">Guid</th>
+                            <!--<th scope="col">Guid</th>-->
                             <th scope="col">Description</th>
-                            <th scope="col">DatePub</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,12 +28,12 @@
                         if (isset($tabNews)) {
                             foreach ($tabNews as $news) {
                                 echo '<tr class="table-active">';
-                                echo '<th scope="row">'.$news->getId().'</th>';
+                                echo '<td>'.$news->getDate().'</td>';
+                                //echo '<th scope="row">'.$news->getId().'</th>';
                                 echo "<td>".$news->getTitle()."</td>";
                                 echo "<td>".$news->getUrl()."</td>";
-                                echo "<td>".$news->getGuid()."</td>";
+                                //echo "<td>".$news->getGuid()."</td>";
                                 echo "<td>".$news->getDescription()."</td>";
-                                echo '<td>'.$news->getDate().'</td>';
                                 echo '</tr>';
                             }
                         }

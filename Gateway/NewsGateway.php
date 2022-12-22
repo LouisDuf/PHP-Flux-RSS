@@ -120,7 +120,8 @@ class NewsGateway
         return $results[0][0];
     }
 
-    public function getOldestNews() {
+    public function getOldestNews(): News
+    {
         $query = 'SELECT * FROM tnews WHERE datePub=(SELECT min(datePub)
                                                      FROM tnews)';
         $this->co->executeQuery($query);
@@ -137,7 +138,8 @@ class NewsGateway
         return $news;
     }
 
-    public function getNewsByGuid(string $guid) {
+    public function getNewsByGuid(string $guid): array
+    {
         $querry = "SELECT * FROM tnews WHERE guid=:guid";
         $params = array("guid" => array($guid, PDO::PARAM_STR));
         $this->co->executeQuery($querry, $params);
