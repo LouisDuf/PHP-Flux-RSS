@@ -20,7 +20,6 @@
           rel="stylesheet"
         />
         <link rel="stylesheet" type="text/css" href="Vue/styleCon.css">
-        <link rel=icon href="imgs/Minecraft-logos.png"/>
     </head>
     <body>
         <section class="h-100 gradient-form" style="background-color: #eee;">

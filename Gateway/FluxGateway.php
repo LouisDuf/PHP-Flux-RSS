@@ -1,8 +1,8 @@
 <?php
-namespace gateway;
+namespace Gateway;
 
-use config\Connection;
-use metier\Flux;
+use Config\Connection;
+use Metier\Flux;
 use PDO;
 
 class FluxGateway

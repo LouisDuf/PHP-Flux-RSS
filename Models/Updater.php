@@ -1,27 +1,34 @@
 <?php
 
-namespace models;
+namespace Models;
 
-use config\Cleaner;
-use metier\Flux;
-use metier\News;
+use Config\Cleaner;
+use Metier\Flux;
+use Metier\News;
 use DOMDocument;
 use DateTime;
 
 class Updater
 {
+    /****************** Déclaration des varaibles GateWays ******************/
     private Model $model;
+
+    /****************** Constructeur ******************/
     public function __construct() {
         $this->model = new Model();
         $this->updateDatabase();
     }
 
-    private function updateNewsFromFlux(Flux $flux)
+    /****************** Méthodes ******************/
+    /**
+     * @param Flux $flux
+     * @return void
+     */
+    private function updateNewsFromFlux(Flux $flux): void
     {
         $parseur = new DOMDocument();
         $parseur->load($flux->getLink());
 
-        $maList = array();
         foreach ($parseur->getElementsByTagName("item") as $key => $node)
         {
             $id = $key;
@@ -53,23 +60,19 @@ class Updater
             }
             if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
             {
-                //var_dump($node->getElementsByTagName("pubDate")[0]->nodeValue);
                 $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
-                //$date = $date->format('Y-m-d');
-                //var_dump($date);
-                //$date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
             }
             else
             {
                 $date = "date_Vide";
             }
-
             $newNews = new News($id, $titre, $description, $link, $link, $date, $flux->getId());
             $this->model->addNews($newNews);
         }
     }
 
-    public function updateDatabase() {
+    public function updateDatabase(): void
+    {
         foreach ($this->model->getAllFlux() as $flux) {
             $this->updateNewsFromFlux($flux);
         }

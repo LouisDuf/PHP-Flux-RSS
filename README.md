@@ -1,6 +1,35 @@
 # ProjetPHP
 
 Ce projet a été réalisé durant le cours de PHP de 2ème année de BUT à l'IUT Clermont Auvergne.  
+## Utilisation 
+Explorer le monde
+Lecteur fluxs RSS
+
+Dévellopeurs :
+Louis Dufour : Louis.Dufour@etu.uca.fr
+Rémi Regnault : Rémi.Regnault@etu.uca.fr
+IUT Informatique - Clermont-Ferrand, FRANCE
+
+Utilisation :
+1 - Charger le fichier "TableProject.sql".
+2 - Définir le nom, le serveur et les identifiants de la base de donnée dans le fichier "Config/config.php".
+3 - Placer le site dans le répertoire de votre serveur WEB (Apache, nginx,..) .
+4 - Vous pouvez vous connecter en utilisant le button connexion.
+Les identifiants sont :
+user :      admin0
+password:   mdp
+Pour l'instant, le changement du mot de passe s'éffectue dans la base de donnée dans la table `tadmin`.
+Le mot de passe est crypté en utilisant la méthode md5.
+Vous pouvez convertir votre mot de passe en utilisant le script "md5.php".
+
+Mise à jour des Fluxs:
+
+    La mise à jour peut être éffectué :
+        - Depuis le site en étant connecté par le bouton "Rafraichir base" se trouvant dans la barre de menu à gauche
+        - En executant le fichier "refreshRSSContent.php".
+    Il est possible d'appeler le fihier "refreshRSSContent.php" depuis une tâche CRON et donc d'automatiser la mise à
+     jour.
+
 
 ## Répartition du travail
 

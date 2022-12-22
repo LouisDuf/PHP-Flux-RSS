@@ -8,6 +8,7 @@
         <?php
         require("navbar.php")
         ?>
+        <h2 class="mb-4 mt-3">Liste News :</h2>
         <div class="page-content page-container" id="page-content">
 
             <div>

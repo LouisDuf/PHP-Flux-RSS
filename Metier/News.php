@@ -1,6 +1,6 @@
 <?php
 
-namespace metier;
+namespace Metier;
 
     use DateTime;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace models;
+namespace Models;
 
-use config\Cleaner;
-use config\Connection;
-use gateway\AdminGateway;
-use metier\Admin;
+use Config\Cleaner;
+use Config\Connection;
+use Gateway\AdminGateway;
+use Metier\Admin;
 
 
 class AdminModel
@@ -19,7 +19,8 @@ class AdminModel
      * Vérifie si nous avons bien a faire un admin
      * @return Admin|null
      */
-    public function isAdmin(){
+    public function isAdmin(): ?Admin
+    {
         if (isset($_SESSION['role']) && isset($_SESSION['login'])) {
             $role = Cleaner::NettoyageStr($_SESSION['role']);
             $login = Cleaner::NettoyageStr($_SESSION['login']);
@@ -35,7 +36,8 @@ class AdminModel
      * @param string $mdp
      * @return Admin|null
      */
-    public function connecter(string $loginUser, string $password) {
+    public function connecter(string $loginUser, string $password): ?Admin
+    {
         global $base, $login, $mdp;
         $adm_gw = new AdminGateway(new Connection($base, $login, $mdp));
 
@@ -52,10 +54,8 @@ class AdminModel
         return null;
     }
 
-    /**
-     * @return void
-     */
-    public function deconnecter(){
+    public function deconnecter(): void
+    {
         unset($_SESSION);
         session_destroy();
     }

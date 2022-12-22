@@ -9,12 +9,15 @@
         require("navbar.php")
         ?>
         <div class="page-content page-container" id="page-content">
-            <div class="d-flex justify-content-end">
-                <a href="index.php?action=pageAjoutFlux">
-                <button type="button" class="btn btn-primary">
-                    Ajouter flux
-                </button>
-                </a>
+            <div class="d-flex justify-content-between align-items-center ">
+                <h2 class="mb-4 mt-3">Liste Flux :</h2>
+                <div>
+                    <a href="index.php?action=pageAjoutFlux">
+                    <button type="button" class="btn btn-primary">
+                        Ajouter flux
+                    </button>
+                    </a>
+                </div>
             </div>
             <div>
                 <table class="table">

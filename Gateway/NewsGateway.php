@@ -1,9 +1,9 @@
 <?php
-namespace gateway;
+namespace Gateway;
 
-use config\Connection;
+use Config\Connection;
 use DateTime;
-use metier\News;
+use Metier\News;
 use PDO;
 
 class NewsGateway
@@ -42,7 +42,8 @@ class NewsGateway
         $this->co->executequery($query, $params);
     }
 
-    public function removeOldestNews() {
+    public function removeOldestNews(): void
+    {
         $query = 'DELETE FROM tnews WHERE datePub=(SELECT min(datePub)
                                                    FROM tnews)';
         $this->co->executeQuery($query);

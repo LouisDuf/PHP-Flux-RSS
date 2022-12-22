@@ -6,14 +6,16 @@
  * Time: 22:36
  */
 
-namespace controleur;
+namespace Controleur;
 
-use metier\Flux;
-use models\Model;
-use models\AdminModel;
-use config\Validation;
-use config\Cleaner;
-use models\Updater;
+use Exception;
+use Metier\Flux;
+use Models\Model;
+use Models\AdminModel;
+use Config\Validation;
+use Config\Cleaner;
+use Models\Updater;
+use PDOException;
 
 class adminControler{
 
@@ -74,23 +76,21 @@ class adminControler{
                     echo 'Ce message ne devrait jamais être vu';
                     break;
             }
-        } catch (\PDOException $e) {
-            global $rep, $vues;
-            $tab_erreur[] = "Erreur : ".$e->getMessage();
-            require($rep.$vues["erreur"]);
-        } catch (\Exception $e) {
+        } catch (PDOException|Exception $e) {
             global $rep, $vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         }
     }
 
-    private function deconnexion(){
+    private function deconnexion(): void
+    {
         $this->admin->deconnecter();
         header("Location: .");
     }
 
-    private function afficherFlux() {
+    private function afficherFlux(): void
+    {
         global $rep, $vues;
         $model = new Model();
 
@@ -108,12 +108,13 @@ class adminControler{
         require ($rep.$vues['flux']);
     }
 
-    private function afficherFormulaireFlux() {
+    private function afficherFormulaireFlux(): void
+    {
         global $rep, $vues;
         require($rep.$vues['formulaireFlux']);
     }
 
-    private function supprimerFlux()
+    private function supprimerFlux(): void
     {
         $model = new Model();
         $id = $_REQUEST['idFlux']??null;
@@ -124,7 +125,7 @@ class adminControler{
         $this->afficherFlux();
     }
 
-    private function ajouterFlux()
+    private function ajouterFlux(): void
     {
         $model = new Model();
 
@@ -140,7 +141,8 @@ class adminControler{
         $this->afficherFlux();
     }
     
-    private function afficherPageParams($msg) {
+    private function afficherPageParams($msg): void
+    {
         global $rep, $vues;
 
         $model = new Model();
@@ -154,7 +156,8 @@ class adminControler{
         require($rep.$vues['params']);
     }
 
-    private function setNewsParPage() {
+    private function setNewsParPage(): void
+    {
         $msg=null;
         $model = new Model();
         $old_value = $model->getNbNewsParPage();
@@ -167,7 +170,8 @@ class adminControler{
         $this->afficherPageParams($msg);
     }
 
-    private function setFluxParPage() {
+    private function setFluxParPage(): void
+    {
         $msg=null;
         $model = new Model();
         $old_value = $model->getNbFluxParPage();
@@ -180,7 +184,8 @@ class adminControler{
         $this->afficherPageParams($msg);
     }
 
-    private function setNewsMax() {
+    private function setNewsMax(): void
+    {
         $msg=null;
         $model = new Model();
         $old_value = $model->getNbNewsMax();
@@ -196,7 +201,7 @@ class adminControler{
         $this->afficherPageParams($msg);
     }
 
-    function updateData()
+    function updateData(): void
     {
         $update = new Updater();
         $this->afficherFlux();

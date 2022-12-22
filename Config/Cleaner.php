@@ -7,7 +7,7 @@
  * Time: 22:44
  */
 
-namespace config;
+namespace Config;
 
 class Cleaner {
 

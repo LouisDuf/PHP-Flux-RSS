@@ -1,8 +1,8 @@
 <?php
 
-namespace gateway;
+namespace Gateway;
 
-use config\Connection;
+use Config\Connection;
 use PDO;
 
 class ParamsGateway
@@ -41,21 +41,36 @@ class ParamsGateway
     }
 
     /****************** Setters ******************/
-    public function setNbFluxParPage(int $newValue) {
+    /**
+     * @param int $newValue
+     * @return void
+     */
+    public function setNbFluxParPage(int $newValue): void
+    {
         $query = "UPDATE tParams SET value=:val WHERE param='nbFluxParPage'";
         $params = array('val' => array($newValue, PDO::PARAM_INT));
 
         $this->con->executeQuery($query, $params);
     }
 
-    public function setNbNewsParPage(int $newValue) {
+    /**
+     * @param int $newValue
+     * @return void
+     */
+    public function setNbNewsParPage(int $newValue): void
+    {
         $query = "UPDATE tParams SET value=:val WHERE param='nbNewsParPage'";
         $params = array('val' => array($newValue, PDO::PARAM_INT));
 
         $this->con->executeQuery($query, $params);
     }
 
-    public function setNbNewsMax(int $newValue) {
+    /**
+     * @param int $newValue
+     * @return void
+     */
+    public function setNbNewsMax(int $newValue): void
+    {
         $query = "UPDATE tParams SET value=:val WHERE param='nbNewsTotal'";
         $params = array('val' => array($newValue, PDO::PARAM_INT));
 

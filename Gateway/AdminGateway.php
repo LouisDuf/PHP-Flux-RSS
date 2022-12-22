@@ -1,9 +1,9 @@
 <?php
 
-namespace gateway;
+namespace Gateway;
 
 use PDO;
-use config\Connection;
+use Config\Connection;
 
 class AdminGateway
 {

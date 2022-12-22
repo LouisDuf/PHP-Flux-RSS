@@ -1,6 +1,6 @@
 <?php
 
-namespace config;
+namespace Config;
 
 
 	class Connection extends \PDO {

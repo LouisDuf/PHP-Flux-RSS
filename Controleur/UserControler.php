@@ -1,11 +1,11 @@
 <?php
 
-namespace controleur;
+namespace Controleur;
 
 use Exception;
-use config\Cleaner;
-use models\AdminModel;
-use models\Model;
+use Config\Cleaner;
+use Models\AdminModel;
+use Models\Model;
 use PDOException;
 
 class UserControler

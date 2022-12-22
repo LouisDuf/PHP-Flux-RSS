@@ -1,8 +1,7 @@
 <?php
 
-namespace config;
+namespace Config;
 
-use Exception;
 
 class Validation {
     static function val_int($value) {

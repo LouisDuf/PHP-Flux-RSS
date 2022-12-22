@@ -1,6 +1,6 @@
 <?php
 
-namespace metier;
+namespace Metier;
 
 class Flux
 {
@@ -16,9 +16,6 @@ class Flux
      * @param string $path
      * @param string $link
      * @param string $description
-     * @param string $image_url
-     * @param string $image_titre
-     * @param string $image_link
      */
     public function __construct(int $id, string $title, string $path, string $link, string $description)
     {
