@@ -51,7 +51,7 @@
                         if (isset($page) && isset($pageMax)) {
                             if ($page>1) {
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?action=afficherFlux&page=1">First</a>';
+                                echo '<a class="page-link" href="index.php?page=1">First</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -62,7 +62,7 @@
                             if ($page>1) {
                                 $page_m1 = $page-1;
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page_m1.'">Previous</a>';
+                                echo '<a class="page-link" href="index.php?page='.$page_m1.'">Previous</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -72,13 +72,13 @@
 
 
                             echo '<li class="page-item active" aria-current="page">';
-                            echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page.'">'.$page.'<span class="visually-hidden">(current)</span></a>';
+                            echo '<a class="page-link" href="index.php?page='.$page.'">'.$page.'<span class="visually-hidden">(current)</span></a>';
                             echo '</li>';
 
                             if ($page<$pageMax) {
                                 $page_p1=$page+1;
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$page_p1.'">Next</a>';
+                                echo '<a class="page-link" href="index.php?page='.$page_p1.'">Next</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';
@@ -88,7 +88,7 @@
 
                             if ($page<$pageMax) {
                                 echo '<li class="page-item">';
-                                echo '<a class="page-link" href="index.php?action=afficherFlux&page='.$pageMax.'">Last</a>';
+                                echo '<a class="page-link" href="index.php?page='.$pageMax.'">Last</a>';
                             }
                             else {
                                 echo '<li class="page-item disabled">';

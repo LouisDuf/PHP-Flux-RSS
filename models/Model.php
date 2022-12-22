@@ -30,77 +30,6 @@ class Model
     }
 
     /****************** Méthodes Ajout/Suppression  ******************/
- 
-    // Ajout
-    public function loadNews(Flux $flux)
-    {
-        $parseur = new DOMDocument();
-        $parseur->load($flux->getLink());
-
-        $maList = array();
-        foreach ($parseur->getElementsByTagName("item") as $key => $node)
-        {
-            $id = $key;
-            if (isset($node->getElementsByTagName("title")[0]->nodeValue))
-            {
-                $titre = Cleaner::NettoyageStr($node->getElementsByTagName("title")[0]->nodeValue);
-
-            }
-            else
-            {
-                $titre = "titre_Vide";
-            }
-            if (isset($node->getElementsByTagName("description")[0]->nodeValue))
-            {
-                $description = Cleaner::NettoyageStr($node->getElementsByTagName("description")[0]->nodeValue);
-            }
-            else
-            {
-                $description = "description_Vide";
-            }
-
-            if (isset($node->getElementsByTagName("link")[0]->nodeValue))
-            {
-                $link = Cleaner::NettoyageURL($node->getElementsByTagName("link")[0]->nodeValue);
-            }
-            else
-            {
-                $link = "liens_Vide";
-            }
-            if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
-            {
-                //var_dump($node->getElementsByTagName("pubDate")[0]->nodeValue);
-                $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
-                //$date = $date->format('Y-m-d');
-                //var_dump($date);
-                //$date = $node->getElementsByTagName("pubDate")[0]->nodeValue;
-            }
-            else
-            {
-                $date = "date_Vide";
-            }
-
-            $item = [
-                'id' => $id,
-                'title' => $titre,
-                'desc' => $description,
-                'link' => $link,
-                'date' => $date,
-            ];
-            $maList[] = $item;
-
-            if(count($maList) != 500)
-            {
-                $newNews = new News($id, $titre, $description, $link, $link, $date, $flux->getId());
-                $this->news_g->gAddNews($newNews);
-            }
-            else
-            {
-                echo "la liste est pleine";
-            }
-        }
-    }
-
     public function addFlux($flux): void
     {
         $this->flux_g->gAddFlux($flux);
@@ -125,6 +54,21 @@ class Model
         while ($nbNews > $nbNewsMax) {
             $this->news_g->removeOldestNews();
             $nbNews = $nbNews - 1;
+        }
+    }
+
+    public function addNews(News $new_news) {
+        $nbNews = $this->getNbNews();
+        $nbNewsMax=$this->getNbNewsMax();
+        if ($nbNews>=$nbNewsMax) {
+            $oldest_news = $this->getOldestNews();
+            if ($oldest_news->getDate() < $new_news) {
+                $this->news_g->removeOldestNews();
+                $this->news_g->gAddNews($new_news);
+            }
+        }
+        else {
+            $this->news_g->gAddNews($new_news);
         }
     }
 
@@ -180,6 +124,10 @@ class Model
 
     public function getNbNewsMax() {
         return $this->params_g->getNbNewsMax();
+    }
+
+    public function getOldestNews() {
+        return $this->news_g->getOldestNews();
     }
 
     /****************** Setters ******************/

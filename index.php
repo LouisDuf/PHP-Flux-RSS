@@ -18,12 +18,7 @@ $myLibLoader->register();
 $myLibLoader = new SplClassLoader('metier', './');
 $myLibLoader->register();
  
-$model = new models\Model();
-$fluxs = $model->getAllFlux();
-
-foreach($fluxs as $flux){
-    $model->loadNews($flux);
-}
+//$update = new models\Updater();
 
 $controler_user = new FrontControler();
 

@@ -100,4 +100,4 @@ INSERT INTO tflux(title, path, link, description) VALUES('France Info',
 
 
 
-INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
+--INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');

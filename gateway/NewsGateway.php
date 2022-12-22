@@ -119,6 +119,21 @@ class NewsGateway
         return $results[0][0];
     }
 
+    public function getOldestNews() {
+        $query = 'SELECT * FROM tnews WHERE datePub=(SELECT min(datePub)
+                                                     FROM tnews)';
+        $this->co->executeQuery($query);
 
+        $results = $this->co->getResults();
+        $news = new News(intval(
+            $results[0]['id']),
+            $results[0]['title'],
+            $results[0]['description'],
+            $results[0]["url"],
+            $results[0]["guid"],
+            DateTime::createFromFormat('D, d M Y H:i:s T', $results[0]['datepub']),
+            intval($results[0]['flux']));
+        return $news;
+    }
 
 }
