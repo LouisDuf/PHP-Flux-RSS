@@ -115,11 +115,11 @@ class adminControler{
 
     private function supprimerFlux()
     {
-        $model = new FluxModel();
+        $model = new Model();
         $id = $_REQUEST['idFlux']??null;
         if ($id != null) {
             $id = Cleaner::NettoyageInt($id);
-            $model->supprimer($id);
+            $model->supprimerFlux($id);
         }
         $this->afficherFlux();
     }
