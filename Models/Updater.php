@@ -61,7 +61,6 @@ class Updater
             if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
             {
                 $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
-                var_dump($date);
             }
             else
             {
