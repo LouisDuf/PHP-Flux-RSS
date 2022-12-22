@@ -58,17 +58,20 @@ class Model
     }
 
     public function addNews(News $new_news) {
-        $nbNews = $this->getNbNews();
-        $nbNewsMax=$this->getNbNewsMax();
-        if ($nbNews>=$nbNewsMax) {
-            $oldest_news = $this->getOldestNews();
-            if ($oldest_news->getDate() < $new_news) {
-                $this->news_g->removeOldestNews();
+        $news_same_guid = $this->news_g->getNewsByGuid($new_news->getGuid());
+        if (!$news_same_guid) {
+            $nbNews = $this->getNbNews();
+            $nbNewsMax=$this->getNbNewsMax();
+            if ($nbNews>=$nbNewsMax) {
+                $oldest_news = $this->getOldestNews();
+                if ($oldest_news->getDate() < $new_news) {
+                    $this->news_g->removeOldestNews();
+                    $this->news_g->gAddNews($new_news);
+                }
+            }
+            else {
                 $this->news_g->gAddNews($new_news);
             }
-        }
-        else {
-            $this->news_g->gAddNews($new_news);
         }
     }
 

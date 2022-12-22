@@ -64,7 +64,7 @@
                     </tr>
                     <tr>
                         <form action="index.php?action=setNewsMax" method="post">
-                            <th scope="row">Nombre de flux par page</th>
+                            <th scope="row">Nombre de news maximum</th>
                             <td>
                                 <?php
                                 if (isset($nbNewsMax)) {

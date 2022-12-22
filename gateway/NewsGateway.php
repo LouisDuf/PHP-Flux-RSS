@@ -136,4 +136,25 @@ class NewsGateway
         return $news;
     }
 
+    public function getNewsByGuid(string $guid) {
+        $querry = "SELECT * FROM tnews WHERE guid=:guid";
+        $params = array("guid" => array($guid, PDO::PARAM_STR));
+        $this->co->executeQuery($querry, $params);
+
+        $results = $this->co->getResults();
+
+        $liste_News = array();
+        foreach ($results as $row)
+        {
+            $liste_News[] = new News(intval(
+                $row['id']),
+                $row['title'],
+                $row['description'],
+                $row["url"],
+                $row["guid"],
+                DateTime::createFromFormat('D, d M Y H:i:s T', $row['datepub']),
+                intval($row['flux']));
+        }
+        return $liste_News;
+    }
 }
