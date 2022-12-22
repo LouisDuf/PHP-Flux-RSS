@@ -40,17 +40,9 @@
                         <form action="index.php?action=connexion" method="post">
                           <p>Please login to your account</p>
 
-                          <div class="form-outline mb-4">
-                            <input type="pseudo" id="form2Example11" class="form-control"
-                              placeholder="Username" name="login"/>
-                            <label class="form-label" for="form2Example11">Username</label>
-                          </div>
+                          <input type="pseudo" class="form-control" placeholder="Username" name="login"/>
 
-                          <div class="form-outline mb-4">
-                            <input type="password" id="form2Example22" class="form-control"
-                              placeholder="password" name="password"/>
-                            <label class="form-label" for="form2Example22">Password</label>
-                          </div>
+                          <input type="password" class="form-control" placeholder="password" name="password"/>
 
                           <div>
                               <input type="submit" value="connexion">

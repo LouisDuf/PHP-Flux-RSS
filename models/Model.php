@@ -34,15 +34,9 @@ class Model
     }
 
     // Suppression
-
     public function supprimerFlux($idFlux): void
     {
         $this->flux_g->gSupprimerFlux($idFlux);
-    }
-
-    public function supprimerNews($newNews): void
-    {
-        $this->news_g->gSupprimerNews($newNews);
     }
 
     public function faireLeMenageDansLesNews() {
@@ -74,13 +68,7 @@ class Model
     }
 
     /****************** Getters ******************/
-
-    // Flux 
-    public function getFluxById($id): Flux
-    {
-        return $this->flux_g->getFluxById($id);
-    }
-
+    // Flux
     public function getAllFlux(): array
     {
         return $this->flux_g->gAfficherFlux();
@@ -96,10 +84,6 @@ class Model
     }
 
     // News
-    public function getAllNews(): array
-    {
-        return $this->news_g->getAllNews();
-    }
 
     public function getNewsByPage($page, $nbPage): array
     {
@@ -108,11 +92,6 @@ class Model
 
     public function getNbNews(){
         return $this->news_g->getNbNews();
-    }
-
-    public function getNewsById($idNews): News
-    {
-        return $this->news_g->getNewsById($idNews);
     }
 
     public function getNbNewsParPage() {
