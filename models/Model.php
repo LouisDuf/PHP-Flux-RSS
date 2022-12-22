@@ -28,13 +28,13 @@ class Model
     }
 
     /****************** Méthodes Ajout/Suppression  ******************/
-    public function addFlux($flux): void
+    public function addFlux(Flux $flux): void
     {
         $this->flux_g->gAddFlux($flux);
     }
 
     // Suppression
-    public function supprimerFlux($idFlux): void
+    public function supprimerFlux(int $idFlux): void
     {
         $this->flux_g->gSupprimerFlux($idFlux);
     }

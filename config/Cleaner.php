@@ -21,7 +21,7 @@ class Cleaner {
         return $chaine;
     }
 
-    public static  function NettoyageInt($int) {
+    public static function NettoyageInt($int) {
         filter_var($int, FILTER_SANITIZE_NUMBER_INT);
         return $int;
     }

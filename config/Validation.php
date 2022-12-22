@@ -13,7 +13,7 @@ class Validation {
         return filter_var($value, FILTER_VALIDATE_REGEXP);
     }
 
-    static function  val_url($value) {
+    static function val_url($value) {
         return filter_var($value, FILTER_VALIDATE_URL);
     }
 }
