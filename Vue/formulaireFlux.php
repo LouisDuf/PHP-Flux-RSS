@@ -15,12 +15,6 @@
 
             <textarea class="form-control" rows="4" placeholder="Description" name="description" required="required"></textarea>
 
-            <input type="text" class="form-control" placeholder="URL de l'image" name="image-url"/>
-
-            <input type="text" class="form-control" placeholder="Titre de l'image" name="image-title"/>
-
-            <input type="text" class="form-control" placeholder="Lien de l'image" name="image-link"/>
-
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-4">Valider l'ajout</button>
         </form>
