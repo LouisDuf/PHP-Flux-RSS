@@ -1,7 +1,8 @@
 <html>
     <head>
+        <link rel=icon href=" https://cdn-icons-png.flaticon.com/512/7860/7860934.png"/>
         <title>Liste - News</title>
-
+        <meta charset="utf-8" />
     </head>
     <body>
         <?php

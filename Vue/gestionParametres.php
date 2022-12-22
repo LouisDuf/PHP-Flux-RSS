@@ -2,6 +2,7 @@
 <html lang="fr">
     <head>
         <title>Paramètres</title>
+        <link rel=icon href=" https://cdn-icons-png.flaticon.com/512/7860/7860934.png"/>
         <meta charset="utf-8" />
     </head>
     <body>

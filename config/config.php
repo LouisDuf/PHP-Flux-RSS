@@ -9,14 +9,14 @@ $rep=__DIR__.'/../';
 
 //BD
 
-//$base="pgsql:host=localhost;dbname=louloudb";
-//$login="loulou";
-//$mdp="dbloulou";
+$base="pgsql:host=localhost;dbname=louloudb";
+$login="loulou";
+$mdp="dbloulou";
 
 
-$base="pgsql:host=localhost;dbname=dbprojetphp";
-$login="remi";
-$mdp="achanger";
+//$base="pgsql:host=localhost;dbname=dbprojetphp";
+//$login="remi";
+//$mdp="achanger";
 
 
 //Vues
