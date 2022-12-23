@@ -3,7 +3,7 @@ Ce projet a été réalisé durant le cours de PHP de 2ème année de BUT à l'I
 
 ## Utilisation 
 1. Charger le fichier "TableProject.sql".
-2. Définir le nom, le serveur et les identifiants de la base de données dans le fichier "config/config.php".
+2. Définir le nom, le serveur et les identifiants de la base de données dans le fichier "Config/config.php".
 3. Placer le site dans le répertoire de votre serveur WEB (Apache, nginx,..).
 4. Vous pouvez vous connecter en utilisant le bouton connexion.
 
