@@ -3,23 +3,23 @@ Ce projet a été réalisé durant le cours de PHP de 2ème année de BUT à l'I
 
 ## Utilisation 
 1. Charger le fichier "TableProject.sql".
-2. Définir le nom, le serveur et les identifiants de la base de donnée dans le fichier "Config/config.php".
-3. Placer le site dans le répertoire de votre serveur WEB (Apache, nginx,..) .
-4. Vous pouvez vous connecter en utilisant le button connexion.
+2. Définir le nom, le serveur et les identifiants de la base de données dans le fichier "config/config.php".
+3. Placer le site dans le répertoire de votre serveur WEB (Apache, nginx,..).
+4. Vous pouvez vous connecter en utilisant le bouton connexion.
 
 Les identifiants sont :
 * user :      admin0
 * password:   mdp
 
-Pour l'instant, le changement du mot de passe s'éffectue dans la base de donnée dans la table `tadmin`.
-Le mot de passe est crypté.
+Pour l'instant, le changement du mot de passe s'effectue dans la base de données dans la table `tadmin`.
+Le mot de passe est hashé.
 
-Mise à jour des Fluxs:
-La mise à jour peut être éffectué depuis le site en étant connecté par le bouton "Rechargement News" se trouvant dans la barre de menu à droite.
+Mise à jour des news depuis les flux:
+La mise à jour peut être effectuée depuis le site en étant connecté en tant qu'admin avec le bouton "Rechargement News" se trouvant dans la barre de menu à droite.
 
-## Dévellopeurs 
+## Développeurs 
 * Louis Dufour : Louis.Dufour@etu.uca.fr
-* Rémi Regnault : Rémi.Regnault@etu.uca.fr
+* Rémi Regnault : Remi.Regnault@etu.uca.fr
 
 ## Répartition du travail
 
