@@ -17,6 +17,11 @@ Le mot de passe est hashé.
 Mise à jour des news depuis les flux:
 La mise à jour peut être effectuée depuis le site en étant connecté en tant qu'admin avec le bouton "Rechargement News" se trouvant dans la barre de menu à droite.
 
+## Notre configuration
+* PHP 8.1
+* PostgreSQL
+* Apache2
+
 ## Développeurs 
 * Louis Dufour : Louis.Dufour@etu.uca.fr
 * Rémi Regnault : Remi.Regnault@etu.uca.fr
