@@ -16,10 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">DatePub</th>
-                            <!--<th scope="col">News</th>-->
                             <th scope="col">Titre</th>
-                            <th scope="col">Url</th>
-                            <!--<th scope="col">Guid</th>-->
                             <th scope="col">Description</th>
                         </tr>
                     </thead>
@@ -29,10 +26,7 @@
                             foreach ($tabNews as $news) {
                                 echo '<tr class="table-active">';
                                 echo '<td>'.$news->getDate().'</td>';
-                                //echo '<th scope="row">'.$news->getId().'</th>';
-                                echo "<td>".$news->getTitle()."</td>";
-                                echo '<td><a href="'.$news->getUrl().'" target="_blank">'.$news->getUrl().'</a></td>';
-                                //echo "<td>".$news->getGuid()."</td>";
+                                echo '<td><a href="'.$news->getUrl().'" target="_blank">'.$news->getTitle().'</a></td>';
                                 echo "<td>".$news->getDescription()."</td>";
                                 echo '</tr>';
                             }

@@ -10,7 +10,7 @@ class AdminGateway
     private Connection $co;
 
     /**
-     * @param $co
+     * @param Connection $co
      */
     public function __construct(Connection $co)
     {

@@ -34,14 +34,6 @@ class NewsGateway
     }
 
     // Suppression
-    public function gSupprimerNews(int $idNews): void
-    {
-        $query = 'DELETE FROM tnews WHERE id=:id';
-        $params = array("id"=>array($idNews, PDO::PARAM_INT));
-
-        $this->co->executequery($query, $params);
-    }
-
     public function removeOldestNews(): void
     {
         $query = 'DELETE FROM tnews WHERE datePub=(SELECT min(datePub)
@@ -51,23 +43,6 @@ class NewsGateway
 
 
     /****************** Getters ******************/
-    public function getNewsById(int $id) : News
-    {
-        $querry = "SELECT * FROM tnews WHERE id=:id";
-        $params = array("id" => array($id, PDO::PARAM_INT));
-        $this->co->executeQuery($querry, $params);
-
-        $results = $this->co->getResults();
-
-        return new News($results[0]["id"],
-                        $results[0]["title"],
-                        $results[0]["description"],
-                        $results[0]["url"],
-                        $results[0]["guid"],
-                        $results[0]["datePub"],
-                        $results[0]["flux"]);
-    }
-
     public function getNewsByPage(int $page, int $nbNews): array
     {
         $querry = "SELECT * FROM tnews ORDER BY datePub DESC LIMIT :n OFFSET :p";
@@ -90,28 +65,6 @@ class NewsGateway
         return $liste_News;
     }
 
-    public function getAllNews(): array
-    {
-        $querry = "SELECT * FROM tnews";
-        $this->co->executeQuery($querry);
-
-        $results = $this->co->getResults();
-
-        $liste_News = array();
-        foreach ($results as $row)
-        {
-            $liste_News[] = new News(intval(
-                $row['id']),
-                $row['title'],
-                $row['description'],
-                $row["url"],
-                $row["guid"],
-                DateTime::createFromFormat('D, d M Y H:i:s T', $row['datepub']),
-                intval($row['flux']));
-        }
-        return $liste_News;
-    }
-
     public function getNbNews() {
         $querry = "SELECT count(*) FROM tnews";
         $this->co->executeQuery($querry);
@@ -127,7 +80,7 @@ class NewsGateway
         $this->co->executeQuery($query);
 
         $results = $this->co->getResults();
-        $news = new News(intval(
+        return new News(intval(
             $results[0]['id']),
             $results[0]['title'],
             $results[0]['description'],
@@ -135,7 +88,6 @@ class NewsGateway
             $results[0]["guid"],
             DateTime::createFromFormat('D, d M Y H:i:s T', $results[0]['datepub']),
             intval($results[0]['flux']));
-        return $news;
     }
 
     public function getNewsByGuid(string $guid): array

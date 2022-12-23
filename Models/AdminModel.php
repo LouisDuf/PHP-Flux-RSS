@@ -32,8 +32,8 @@ class AdminModel
     }
 
     /**
-     * @param string $login
-     * @param string $mdp
+     * @param string $loginUser
+     * @param string $password
      * @return Admin|null
      */
     public function connecter(string $loginUser, string $password): ?Admin

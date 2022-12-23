@@ -6,7 +6,6 @@ class Flux
 {
     private int $id;
     private string $title;
-    //private string $path;
     private string $link;
     private string $description;
 
@@ -20,7 +19,6 @@ class Flux
     {
         $this->id = $id;
         $this->title = $title;
-        //$this->path = $path;
         $this->link = $link;
         $this->description = $description;
     }

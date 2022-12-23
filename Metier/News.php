@@ -41,14 +41,6 @@ namespace Metier;
         }
 
         /**
-         * @return int
-         */
-        public function getId(): int
-        {
-            return $this->id;
-        }
-
-        /**
          * @return string
          */
         public function getTitle(): string
@@ -95,5 +87,4 @@ namespace Metier;
         {
             return $this->flux;
         }
-
     }

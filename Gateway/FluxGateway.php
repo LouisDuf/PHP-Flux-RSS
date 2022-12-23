@@ -60,23 +60,6 @@ class FluxGateway
 
 
     /****************** Getters ******************/
-    public function getFluxById(int $id): Flux
-    {
-        $query = 'SELECT * FROM tflux WHERE id=:id';
-        $params = array("id"=>array($id, PDO::PARAM_INT));
-
-        $this->con->executequery($query, $params);
-
-        $results = $this->con->getResults();
-
-        return new Flux(
-            $results[0]["id"],
-            $results[0]["title"],
-            $results[0]["link"],
-            $results[0]["description"]
-        );
-    }
-
     public function getNbFlux() {
         $query = "SELECT count(*) FROM tflux";
         $this->con->executeQuery($query);

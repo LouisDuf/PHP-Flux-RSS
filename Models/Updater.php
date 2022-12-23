@@ -58,6 +58,14 @@ class Updater
             {
                 $link = "liens_Vide";
             }
+            if (isset($node->getElementsByTagName("guid")[0]->nodeValue))
+            {
+                $guid = Cleaner::NettoyageURL($node->getElementsByTagName("guid")[0]->nodeValue);
+            }
+            else
+            {
+                $guid = "liens_Vide";
+            }
             if (isset($node->getElementsByTagName("pubDate")[0]->nodeValue))
             {
                 $date = DateTime::createFromFormat('D, d M Y H:i:s T', $node->getElementsByTagName("pubDate")[0]->nodeValue);
@@ -66,7 +74,7 @@ class Updater
             {
                 $date = "date_Vide";
             }
-            $newNews = new News($id, $titre, $description, $link, $link, $date, $flux->getId());
+            $newNews = new News($id, $titre, $description, $link, $guid, $date, $flux->getId());
             $this->model->addNews($newNews);
         }
     }

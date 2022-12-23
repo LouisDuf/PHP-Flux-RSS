@@ -17,15 +17,11 @@ use Config\Cleaner;
 use Models\Updater;
 use PDOException;
 
-class adminControler{
-
-    private Model $Model;
+class adminControler
+{
     private AdminModel $admin;
     
     public function __construct(){
-        global $path;
-        
-        //$this->fluxModele = new FluxModel();
         $this->admin = new AdminModel();
 
         if (isset($_REQUEST['action'])) {
@@ -130,7 +126,6 @@ class adminControler{
         $model = new Model();
 
         $title = Cleaner::NettoyageStr($_POST['title'])??null;
-        //$path = Cleaner::NettoyageStr($_POST['path'])??null;
         $link = Cleaner::NettoyageURL($_POST['link'])??null;
         $desc = Cleaner::NettoyageStr($_POST['description'])??null;
 
