@@ -34,9 +34,13 @@ class FrontControler
             } else {
                 new UserControler();
             }
-        } catch (PDOException|Exception $e) {
-            global $rep, $vues;
+        } catch (PDOException $e) {
+            global $rep,$vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
+        } catch (Exception $e) {
+            global $rep,$vues;
+            $tab_erreur[] = "Erreur inattendue : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         }
     }

@@ -72,17 +72,44 @@ class adminControler
                     echo 'Ce message ne devrait jamais être vu';
                     break;
             }
-        } catch (PDOException|Exception $e) {
-            global $rep, $vues;
+        } catch (PDOException $e) {
+            global $rep,$vues;
             $tab_erreur[] = "Erreur : ".$e->getMessage();
+            require($rep.$vues["erreur"]);
+        } catch (Exception $e) {
+            global $rep,$vues;
+            $tab_erreur[] = "Erreur inattendue : ".$e->getMessage();
             require($rep.$vues["erreur"]);
         }
     }
 
     private function deconnexion(): void
     {
+        global $rep, $vues;
         $this->admin->deconnecter();
-        header("Location: .");
+        $model = new Model();
+        $page = $_REQUEST['page']??null;
+        if ($page == null) {
+            $page = 1;
+        }
+        else {
+            $page = abs(Cleaner::NettoyageInt($page));
+            if ($page==0) {
+                $page=1;
+            }
+        }
+        $nbNewsParPage = $model->getNbNewsParPage();
+        $tabNews = $model->getNewsByPage($page, $nbNewsParPage);
+
+        $nbNewsTot = $model->getNbNews();
+        $pageMax = ceil($nbNewsTot/$nbNewsParPage);
+
+        $tabFlux = array();
+        foreach ($model->getAllFlux() as $flux) {
+            $tabFlux[$flux->getId()] = $flux;
+        }
+
+        require($rep.$vues['accueil']);
     }
 
     private function afficherFlux(): void

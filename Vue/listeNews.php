@@ -15,17 +15,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">DatePub</th>
+                            <th scope="col">Publication</th>
+                            <th scope="col">Site</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        if (isset($tabNews)) {
+                        if (isset($tabNews) && isset($tabFlux)) {
                             foreach ($tabNews as $news) {
                                 echo '<tr class="table-active">';
                                 echo '<td>'.$news->getDate().'</td>';
+                                echo '<td>'.$tabFlux[$news->getFlux()]->getTitle().'</td>';
                                 echo '<td><a href="'.$news->getUrl().'" target="_blank">'.$news->getTitle().'</a></td>';
                                 echo "<td>".$news->getDescription()."</td>";
                                 echo '</tr>';

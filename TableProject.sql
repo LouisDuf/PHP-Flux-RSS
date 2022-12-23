@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS tflux (
     title           varchar(200)        NOT NULL,
     link            varchar(1000)       NOT NULL,
     description     varchar(2000)       NOT NULL
-
     );
 
 -- --------------------------------------------------------

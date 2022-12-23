@@ -7,6 +7,7 @@ use Config\Cleaner;
 use Models\AdminModel;
 use Models\Model;
 use PDOException;
+use Metier\Flux;
 
 class UserControler
 {
@@ -65,6 +66,11 @@ class UserControler
 
         $nbNewsTot = $model->getNbNews();
         $pageMax = ceil($nbNewsTot/$nbNewsParPage);
+
+        $tabFlux = array();
+        foreach ($model->getAllFlux() as $flux) {
+            $tabFlux[$flux->getId()] = $flux;
+        }
 
         require($rep.$vues['accueil']);
     }
