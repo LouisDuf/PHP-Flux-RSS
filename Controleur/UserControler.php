@@ -2,6 +2,7 @@
 
 namespace Controleur;
 
+use Config\Validation;
 use Exception;
 use Config\Cleaner;
 use Models\AdminModel;
@@ -56,16 +57,30 @@ class UserControler
             $page = 1;
         }
         else {
-            $page = abs(Cleaner::NettoyageInt($page));
-            if ($page==0) {
-                $page=1;
+            if (Validation::val_int($page)) {
+                $page = abs(Cleaner::NettoyageInt($page));
+                if ($page==0) {
+                    $page=1;
+                }
             }
+            else {
+                $tab_erreur[] = "Numéro de page invalide : ".$page." n'est pas un numéro.";
+                require($rep.$vues["erreur"]);
+                return;
+            }
+
         }
         $nbNewsParPage = $model->getNbNewsParPage();
         $tabNews = $model->getNewsByPage($page, $nbNewsParPage);
 
         $nbNewsTot = $model->getNbNews();
         $pageMax = ceil($nbNewsTot/$nbNewsParPage);
+
+        if ($page>$pageMax) {
+            $tab_erreur[] = "Numéro de page invalide : ".$pageMax." est la page maximale.";
+            require($rep.$vues["erreur"]);
+            return;
+        }
 
         $tabFlux = array();
         foreach ($model->getAllFlux() as $flux) {

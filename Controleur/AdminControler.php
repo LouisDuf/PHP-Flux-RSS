@@ -88,16 +88,8 @@ class adminControler
         global $rep, $vues;
         $this->admin->deconnecter();
         $model = new Model();
-        $page = $_REQUEST['page']??null;
-        if ($page == null) {
-            $page = 1;
-        }
-        else {
-            $page = abs(Cleaner::NettoyageInt($page));
-            if ($page==0) {
-                $page=1;
-            }
-        }
+        $page = 1;
+
         $nbNewsParPage = $model->getNbNewsParPage();
         $tabNews = $model->getNewsByPage($page, $nbNewsParPage);
 
@@ -117,9 +109,22 @@ class adminControler
         global $rep, $vues;
         $model = new Model();
 
-        $page = Cleaner::NettoyageInt(abs($_REQUEST['page']??1));
-        if ($page == 0) {
+        $page = $_REQUEST['page']??null;
+        if ($page == null) {
             $page = 1;
+        }
+        else {
+            if (Validation::val_int($page)) {
+                $page = abs(Cleaner::NettoyageInt($page));
+                if ($page==0) {
+                    $page=1;
+                }
+            }
+            else {
+                $tab_erreur[] = "Numéro de page invalide : ".$page." n'est pas un numéro.";
+                require($rep.$vues["erreur"]);
+                return;
+            }
         }
 
         $nbFluxByPage=$model->getNbFluxParPage();
@@ -127,6 +132,12 @@ class adminControler
 
         $fluxTot = $model->getNbFlux();
         $pageMax=ceil($fluxTot/$nbFluxByPage);
+
+        if ($page>$pageMax) {
+            $tab_erreur[] = "Numéro de page invalide : ".$pageMax." est la page maximale.";
+            require($rep.$vues["erreur"]);
+            return;
+        }
 
         require ($rep.$vues['flux']);
     }
