@@ -63,32 +63,25 @@ INSERT INTO tparams VALUES('nbNewsTotal', 500);
 
 INSERT INTO tadmin VALUES('admin0', '$argon2i$v=19$m=65536,t=4,p=1$R0U5U3RRdjdYd0JFYm1weQ$aNf7IdQIZXKlX7nfT9GZNcEievYhx3n6+OOoTgTcwOE'); -- vrai mot de passe = mdp
 
-INSERT INTO tflux(title, path, link, description) VALUES('Fnac',
-                                                         'https://leclaireur.fnac.com/feed/',
+INSERT INTO tflux(title, link, description) VALUES('Fnac',
                                                          'https://leclaireur.fnac.com/feed/',
                                                          'Flux RSS de la Fanc : aucune rubrique spécifiée');
-INSERT INTO tflux(title, path, link, description) VALUES('Le Monde',
-                                                         'https://www.lemonde.fr/rss/une.xml',
+INSERT INTO tflux(title, link, description) VALUES('Le Monde',
                                                          'https://www.lemonde.fr/rss/une.xml',
                                                          'Flux RSS Le Monde : rubrique actualité & à la une');
-INSERT INTO tflux(title, path, link, description) VALUES('France Info',
-                                                         'https://www.francetvinfo.fr/france.rss',
+INSERT INTO tflux(title, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/france.rss',
                                                          'Flux RSS France Info : rubrique France');
-INSERT INTO tflux(title, path, link, description) VALUES('France Info',
-                                                         'https://www.francetvinfo.fr/monde/afrique.rss',
+INSERT INTO tflux(title, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/monde/afrique.rss',
                                                          'Flux RSS France Info : rubrique Afrique');
-INSERT INTO tflux(title, path, link, description) VALUES('France Info',
-                                                         'https://www.francetvinfo.fr/monde/ameriques.rss',
+INSERT INTO tflux(title, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/monde/ameriques.rss',
                                                          'Flux RSS France Info : rubrique Amerique');
-INSERT INTO tflux(title, path, link, description) VALUES('France Info',
-                                                         'https://www.francetvinfo.fr/monde/asie.rss',
+INSERT INTO tflux(title, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/monde/asie.rss',
                                                          'Flux RSS France Info : rubrique Asie-Pacifique');
-INSERT INTO tflux(title, path, link, description) VALUES('France Info',
-                                                         'https://www.francetvinfo.fr/monde/proche-orient.rss',
+INSERT INTO tflux(title, link, description) VALUES('France Info',
                                                          'https://www.francetvinfo.fr/monde/proche-orient.rss',
                                                          'Flux RSS France Info : rubrique Proche-Orient');
 
