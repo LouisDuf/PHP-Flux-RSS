@@ -1,7 +1,6 @@
 --
 -- Base de données: fluxrss
 --
-
 DROP TABLE IF EXISTS tadmin;
 DROP TABLE IF EXISTS tnews;
 DROP TABLE IF EXISTS tflux;
@@ -12,11 +11,9 @@ DROP TABLE IF EXISTS tParams;
 --
 -- Structure de la table tflux
 --
-
 CREATE TABLE IF NOT EXISTS tflux (
     id              SERIAL              PRIMARY KEY NOT NULL,
     title           varchar(200)        NOT NULL,
-    path            varchar(500),                   -- Non utilisé
     link            varchar(1000)       NOT NULL,
     description     varchar(2000)       NOT NULL
 
@@ -27,13 +24,12 @@ CREATE TABLE IF NOT EXISTS tflux (
 --
 -- Structure de la table tnews
 --
-
 CREATE TABLE IF NOT EXISTS tnews (
     id              SERIAL              PRIMARY KEY NOT NULL,
     flux            INT                 NOT NULL REFERENCES tflux (id) ON DELETE CASCADE,
     title           varchar(255)        NOT NULL,
     url             varchar(1000)       NOT NULL,
-    guid            varchar(1000),                                           -- Non utilisé
+    guid            varchar(1000),
     description     varchar(5000)       NOT NULL,
     datePub         date                NOT NULL
     );
@@ -44,7 +40,6 @@ CREATE TABLE IF NOT EXISTS tnews (
 --
 -- Structure de la table `tAdmin`
 --
-
 CREATE TABLE IF NOT EXISTS tAdmin (
     login       varchar(50)             PRIMARY KEY NOT NULL,
     mdp         varchar(255)            NOT NULL
@@ -55,7 +50,6 @@ CREATE TABLE IF NOT EXISTS tAdmin (
 --
 -- Structure de la table tParams
 --
-
 CREATE TABLE IF NOT EXISTS tParams (
     param       VARCHAR(255)            PRIMARY KEY NOT NULL,
     value       VARCHAR(255)            NOT NULL
@@ -100,4 +94,3 @@ INSERT INTO tflux(title, path, link, description) VALUES('France Info',
 
 
 
---INSERT INTO tnews VALUES(5,1,'monTitre','monURL','monGUID','maDescription','25-05-2022');
